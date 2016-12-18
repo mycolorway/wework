@@ -4,11 +4,22 @@ require "minitest/pride"
 require 'minitest/autorun'
 require 'minitest/unit'
 
+require 'yaml'
 
-ENV['CORP_ID'] = 'ww79c13c8a6183aac6'
-ENV['CORP_SECRET'] = 'gLZfbW8ZKIi9JYmL_Ox3t9f0gGz9XC6cDJMvZJ_hqqo'
-ENV['APP_ID'] = '1000002'
-ENV['APP_SECRET'] = 'z_KipSNwpDXtY6rE5TS1Tiz5Dg2yx5kden0KyCz810s'
+
+ENV['CORP_ID'] = 'corpid'
+ENV['CORP_SECRET'] = 'corp secret'
+ENV['APP_ID'] = 'appid'
+ENV['APP_SECRET'] = 'app secret'
+
+
+#load seeds file
+seeds_path = File.join(File.dirname(__FILE__), 'seeds.yml')
+if File.exist? seeds_path
+  YAML.load_file(seeds_path).each do |k, v|
+    ENV[k] = "#{v}"
+  end
+end
 
 class Minitest::Test
   Wework.configure do |config|
