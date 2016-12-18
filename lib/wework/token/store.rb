@@ -17,13 +17,13 @@ module Wework
       end
 
       def refresh_token
-        agent.request.get('/gettoken', params: {corpid: agent.corp_id, corpsecret: agent.agent_secret})
+        agent.request.get 'gettoken', params: {corpid: agent.corp_id, corpsecret: agent.agent_secret}
       end
 
       private
 
-      def token_key
-        @token_key ||= [ACCESS_TOKEN_PREFIX, agent.agent_id, agent.secret].map(&:to_s).join('_')
+      def key
+        @key ||= Digest::MD5.hexdigest("#{ACCESS_TOKEN_PREFIX}_#{agent.agent_id}_#{agent.agent_secret}")
       end
 
     end

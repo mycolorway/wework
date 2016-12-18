@@ -9,28 +9,27 @@ module Wework
 
       def access_token
         super
-        redis.hget(token_key, "access_token")
+        redis.hget(key, "access_token")
       end
 
       def expired?
-        redis.hvals(token_key).empty?
+        redis.hvals(key).empty?
       end
-
-      private
 
       def refresh_token
         result = super
 
-        if result.any?
-          expires_in = result['expires_in'].to_i
-          redis.hmset(
-            token_key,
-            "access_token", result['access_token'],
-            "expires_at", Time.now.to_i + expires_in
-          )
-          weixin_redis.expireat(token_key, expires_in - 100)
-        end
+        expires_at = Time.now.to_i + result['expires_in'].to_i - 100
+        redis.hmset(
+          key,
+          "access_token", result['access_token'],
+          "expires_at", expires_at
+        )
+
+        redis.expireat(key, expires_at)
       end
+
+      private
 
       def redis
         Wework.redis

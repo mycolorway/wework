@@ -1,3 +1,7 @@
+require 'active_support/core_ext/module'
+require 'wework/token/store'
+require 'wework/token/redis_store'
+
 module Wework
   class Agent
 
@@ -10,7 +14,6 @@ module Wework
       @corp_id      = corp_id
       @agent_id     = agent_id
       @agent_secret = agent_secret
-
       @options      = options
     end
 
@@ -19,6 +22,7 @@ module Wework
     end
 
     def request
+      @request ||= HttpRequest.new(API_ENDPOINT, false)
     end
 
     def get(path, headers = {})

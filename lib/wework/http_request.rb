@@ -2,7 +2,7 @@
 require 'http'
 
 module Wework
-  class Request
+  class HttpRequest
     attr_reader :base, :ssl_context, :httprb
 
     def initialize(base, skip_verify_ssl)
@@ -46,7 +46,8 @@ module Wework
       header['Accept'] = 'application/json'
       response = yield("#{url_base}#{path}", header)
 
-      raise "Request not OK, response status #{response.status}" if response.status != 200
+      raise ResponseError.new(response.status) unless HTTP_OK_STATUS.include?(response.status)
+
       parse_response(response, as || :json) do |parse_as, data|
         break data unless parse_as == :json && data['errcode'].present?
 
