@@ -2,7 +2,7 @@ require 'wework/token/store'
 require 'wework/token/redis_store'
 
 module Wework
-  module Agent
+  module Api
     class Base
       attr_reader :corp_id, :agent_id, :agent_secret
       attr_accessor :options
@@ -21,7 +21,7 @@ module Wework
       end
 
       def request
-        @request ||= HttpRequest.new(API_ENDPOINT, false)
+        @request ||= Wework::Request.new(API_ENDPOINT, false)
       end
 
       def get(path, headers = {})

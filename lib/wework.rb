@@ -6,15 +6,16 @@ Dir["#{File.dirname(__FILE__)}/wework/*.rb"].each do |path|
   require path
 end
 
-require 'wework/agent/base'
-require 'wework/agent/app'
-require 'wework/agent/contract'
+require 'wework/api/base'
+require 'wework/api/agent'
+require 'wework/api/contact'
 
 module Wework
   API_ENDPOINT        = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze
   ACCESS_TOKEN_PREFIX = 'WEWORK'.freeze
-  CONTRACT_APP_ID     = 'CONTRACT'.freeze
+  CONTACT_AGENT_ID    = 'CONTACT'.freeze
   HTTP_OK_STATUS      = [200, 201].freeze
+  SUCCESS_CODE        = 0
 
   # Exceptions
   class RedisNotConfigException < RuntimeError; end

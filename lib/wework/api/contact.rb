@@ -1,9 +1,9 @@
 module Wework
-  module Agent
-    class Contract < Base
+  module Api
+    class Contact < Base
 
       def initialize(corp_id, corp_secret)
-        super(corp_id, CONTRACT_APP_ID, corp_secret)
+        super(corp_id, CONTACT_AGENT_ID, corp_secret)
       end
 
       def user_create userid, name, mobile, department, data={}

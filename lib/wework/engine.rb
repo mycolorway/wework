@@ -1,5 +1,5 @@
 module Wework
-  class Corp
+  class Engine
 
     attr_reader :corp_id, :corp_secret, :app_id, :app_secret
 
@@ -11,16 +11,16 @@ module Wework
     end
 
     def contract
-      @contract ||= Wework::Agent::Contract.new(corp_id, corp_secret) if contract?
+      @contract ||= Wework::Api::Contact.new(corp_id, corp_secret) if contract?
     end
 
-    def app
-      @app ||= Wework::Agent::App.new(corp_id, app_id, app_secret) if app?
+    def agent
+      @agent ||= Wework::Api::Agent.new(corp_id, app_id, app_secret) if agent?
     end
 
     private
 
-    def app?
+    def agent?
       corp_id.present? && app_id.present? && app_secret.present?
     end
 

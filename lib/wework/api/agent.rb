@@ -1,6 +1,6 @@
 module Wework
-  module Agent
-    class App < Base
+  module Api
+    class Agent < Base
       # user agent: UA is mozilla/5.0 (iphone; cpu iphone os 10_2 like mac os x) applewebkit/602.3.12 (khtml, like gecko) mobile/14c92 wxwork/1.3.2 micromessenger/6.2
 
       def get_info

@@ -2,7 +2,7 @@
 require 'http'
 
 module Wework
-  class HttpRequest
+  class Request
     attr_reader :base, :ssl_context, :httprb
 
     def initialize(base, skip_verify_ssl)
@@ -50,19 +50,9 @@ module Wework
 
       parse_response(response, as || :json) do |parse_as, data|
         break data unless parse_as == :json && data['errcode'].present?
-
-        case data['errcode']
-        when 0 # for request didn't expect results
-          data
-        # 42001: access_token timeout
-        # 40014: invalid access_token
-        # 40001, invalid credential, access_token is invalid or not latest hint
-        # 48001, api unauthorized hint, for qrcode creation # 71
-        when 42001, 40014, 40001, 48001
-          raise AccessTokenExpiredError
-        else
-          raise ResponseError.new(data['errcode'], data['errmsg'])
-        end
+        result = Wework::Result.new(data)
+        raise AccessTokenExpiredError if result.token_expired?
+        result
       end
     end
 
@@ -88,6 +78,24 @@ module Wework
       end
 
       yield(parse_as, data)
+    end
+  end
+
+  class Result < OpenStruct
+    def initialize(data)
+      data['full_message'] = "(#{data['errcode']}) #{data['errmsg']}"
+      super data
+    end
+
+    def token_expired?
+      # 42001: access_token timeout
+      # 40014: invalid access_token
+      # 40001, invalid credential, access_token is invalid or not latest hint
+      [42001, 40014, 40001].include?(errcode)
+    end
+
+    def success?
+      errcode == SUCCESS_CODE
     end
   end
 end

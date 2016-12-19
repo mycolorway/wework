@@ -1,15 +1,15 @@
 require 'test_helper'
 
-class Wework::Agent::ContractTest < Minitest::Test
+class Wework::Api::ContactTest < Minitest::Test
 
-  attr_reader :contract
+  attr_reader :contact
 
   def setup
-    @contract = Wework::Agent::Contract.new(ENV['CORP_ID'], ENV['CORP_SECRET'])
+    @contact = Wework::Api::Contact.new(ENV['CORP_ID'], ENV['CORP_SECRET'])
   end
 
   def test_access_token
-    assert contract.access_token
+    assert contact.access_token
   end
 
   # def test_user_create
@@ -30,36 +30,41 @@ class Wework::Agent::ContractTest < Minitest::Test
   #     'hide_mobile' => 0
   #   }
 
-  #   result = contract.user_create info
+  #   result = contact.user_create info
   #   puts result
   # end
 
   # def test_user_update
-  #   puts contract.user_update 'bxloved', {department: [4]}
+  #   puts contact.user_update 'seandong', {department: [3]}
   # end
 
   # def test_user_simplelist
-  #   result = contract.user_simplelist 1, 1
+  #   result = contact.user_simplelist 1, 1
   #   puts result
   # end
 
   # def test_user_list
-  #   result = contract.user_list 1, 1
-  #   puts result
+  #   result = contact.user_list 1, 1
+  #   p result
+  # end
+
+  # def test_user_get
+  #   result = contact.user_get 'seandong'
+  #   p result
   # end
 
   # def test_department_list
-  #   result = contract.department_list
-  #   puts result
+  #   result = contact.department_list
+  #   assert result.success?
   # end
 
   # def test_department_delete
-  #   result = contract.department_delete 1
+  #   result = contact.department_delete 1
   #   puts result
   # end
 
   # def test_department_create
-  #   result = contract.department_create '产品组', 0
-  #   puts result
+  #   result = contact.department_create '工程组', 1
+  #   assert result.success?
   # end
 end

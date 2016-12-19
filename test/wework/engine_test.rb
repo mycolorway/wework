@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class Wework::CorpTest < Minitest::Test
+class Wework::EngineTest < Minitest::Test
 
-  attr_reader :corp
+  attr_reader :engine
 
   def setup
-    @corp = Wework::Corp.new(
+    @engine = Wework::Engine.new(
       corp_id: ENV['CORP_ID'],
       corp_secret: ENV['CORP_SECRET'],
       app_id: ENV['APP_ID'],
@@ -14,10 +14,10 @@ class Wework::CorpTest < Minitest::Test
   end
 
   def test_contract_is_valid
-    assert corp.contract
+    assert engine.contract
   end
 
-  def test_app_is_valid
-    assert corp.app
+  def test_agent_is_valid
+    assert engine.agent
   end
 end
