@@ -8,4 +8,4 @@
 /spec/reports/
 /tmp/
 *.gem
-seeds.yml
+config.yml

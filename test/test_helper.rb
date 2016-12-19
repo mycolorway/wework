@@ -14,7 +14,7 @@ ENV['APP_SECRET'] = 'app secret'
 
 
 #load seeds file
-seeds_path = File.join(File.dirname(__FILE__), 'seeds.yml')
+seeds_path = File.join(File.dirname(__FILE__), 'fixtures/config.yml')
 if File.exist? seeds_path
   YAML.load_file(seeds_path).each do |k, v|
     ENV[k] = "#{v}"

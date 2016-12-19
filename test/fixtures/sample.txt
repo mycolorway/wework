@@ -1,0 +1,1 @@
+Wework is a ruby API wrapper for work wechat

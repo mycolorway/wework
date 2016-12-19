@@ -20,10 +20,10 @@ module Wework
       end
     end
 
-    def post(path, payload, post_header = {})
+    def post(path, post_body, post_header = {})
       request(path, post_header) do |url, header|
         params = header.delete(:params)
-        httprb.headers(header).post(url, params: params, body: payload, ssl_context: ssl_context)
+        httprb.headers(header).post(url, params: params, json: post_body, ssl_context: ssl_context)
       end
     end
 
