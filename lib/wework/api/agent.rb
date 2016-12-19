@@ -63,7 +63,7 @@ module Wework
       end
 
       def agent_id
-        @agent_id.to_i
+        @app_id.to_i
       end
     end
   end

@@ -1,5 +1,9 @@
+require 'wework/api/oauth'
+
 module Wework
   class Engine
+
+    include Wework::Api::Oauth
 
     attr_reader :corp_id, :corp_secret, :app_id, :app_secret
 

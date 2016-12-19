@@ -2,10 +2,10 @@ module Wework
   module Token
     class Store
 
-      attr_accessor :agent
+      attr_accessor :app
 
-      def initialize(agent)
-        @agent = agent
+      def initialize(app)
+        @app = app
       end
 
       def access_token
@@ -17,13 +17,13 @@ module Wework
       end
 
       def refresh_token
-        agent.request.get 'gettoken', params: {corpid: agent.corp_id, corpsecret: agent.agent_secret}
+        app.request.get 'gettoken', params: {corpid: app.corp_id, corpsecret: app.app_secret}
       end
 
       private
 
       def key
-        @key ||= Digest::MD5.hexdigest("#{ACCESS_TOKEN_PREFIX}_#{agent.agent_id}_#{agent.agent_secret}")
+        @key ||= Digest::MD5.hexdigest("#{ACCESS_TOKEN_PREFIX}_#{app.app_id}_#{app.app_secret}")
       end
 
     end

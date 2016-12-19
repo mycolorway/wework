@@ -1,18 +1,22 @@
 require 'wework/token/store'
 require 'wework/token/redis_store'
+require 'wework/api/oauth'
 
 module Wework
   module Api
     class Base
-      attr_reader :corp_id, :agent_id, :agent_secret
+
+      include Wework::Api::Oauth
+
+      attr_reader :corp_id, :app_id, :app_secret
       attr_accessor :options
 
       delegate :access_token, to: :token_store
 
-      def initialize(corp_id, agent_id, agent_secret, options={})
+      def initialize(corp_id, app_id, app_secret, options={})
         @corp_id      = corp_id
-        @agent_id     = agent_id
-        @agent_secret = agent_secret
+        @app_id       = app_id
+        @app_secret   = app_secret
         @options      = options
       end
 

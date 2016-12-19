@@ -20,4 +20,8 @@ class Wework::EngineTest < Minitest::Test
   def test_agent_is_valid
     assert engine.agent
   end
+
+  def test_authorize_url
+    assert engine.authorize_url('https://zhiren.com')
+  end
 end
