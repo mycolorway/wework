@@ -6,6 +6,10 @@ Dir["#{File.dirname(__FILE__)}/wework/*.rb"].each do |path|
   require path
 end
 
+require 'wework/agent/base'
+require 'wework/agent/app'
+require 'wework/agent/contract'
+
 module Wework
   API_ENDPOINT        = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze
   ACCESS_TOKEN_PREFIX = 'WEWORK'.freeze
