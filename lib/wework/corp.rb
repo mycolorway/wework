@@ -1,5 +1,5 @@
 module Wework
-  class Api
+  class Corp
 
     attr_reader :corp_id, :corp_secret, :app_id, :app_secret
 

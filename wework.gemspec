@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'http', '>= 1.0.4', '< 3'
-  spec.add_dependency 'activesupport', '>= 3.2', '< 5.1.x'
+  spec.add_dependency 'activesupport', '~> 5.0'
   spec.add_dependency 'redis', '~>3.2'
 
   spec.add_development_dependency "bundler", "~> 1.13"
