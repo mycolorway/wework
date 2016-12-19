@@ -1,5 +1,5 @@
 module Wework
-  class Client
+  class Api
 
     attr_reader :corp_id, :corp_secret, :app_id, :app_secret
 

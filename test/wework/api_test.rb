@@ -2,10 +2,10 @@ require 'test_helper'
 
 class Wework::ClientTest < Minitest::Test
 
-  attr_reader :client
+  attr_reader :wework_api
 
   def setup
-    @client = Wework::Client.new(
+    @wework_api = Wework::Api.new(
       corp_id: ENV['CORP_ID'],
       corp_secret: ENV['CORP_SECRET'],
       app_id: ENV['APP_ID'],
@@ -14,10 +14,10 @@ class Wework::ClientTest < Minitest::Test
   end
 
   test 'validate contract API' do
-    assert client.contract
+    assert wework_api.contract
   end
 
   test 'validate app API' do
-    assert client.app
+    assert wework_api.app
   end
 end
