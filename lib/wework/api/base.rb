@@ -1,12 +1,9 @@
 require 'wework/token/store'
 require 'wework/token/redis_store'
-require 'wework/api/oauth'
 
 module Wework
   module Api
     class Base
-
-      include Wework::Api::Oauth
 
       attr_reader :corp_id, :app_id, :app_secret
       attr_accessor :options

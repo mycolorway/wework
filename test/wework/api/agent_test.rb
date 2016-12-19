@@ -12,6 +12,10 @@ class Wework::Api::AgentTest < Minitest::Test
     @video_media_id = '1KPqSJKKdQ7qmTeoK4Nhd80P7loOaiPoI29xrXuF-e4ywY-HHzIHKFHvH7b4N0gaA'
   end
 
+  def test_authorize_url
+    assert agent.authorize_url('https://zhiren.com')
+  end
+
   # def test_access_token
   #   assert agent.access_token
   # end

@@ -1,7 +1,18 @@
+require "erb"
+
 module Wework
   module Api
     class Agent < Base
       # user agent: UA is mozilla/5.0 (iphone; cpu iphone os 10_2 like mac os x) applewebkit/602.3.12 (khtml, like gecko) mobile/14c92 wxwork/1.3.2 micromessenger/6.2
+
+      def authorize_url(redirect_uri, scope="snsapi_base", state="wxwork")
+        uri = ERB::Util.url_encode(redirect_uri)
+        "#{AUTHORIZE_ENDPOINT}?appid=#{corp_id}&redirect_uri=#{uri}&response_type=code&scope=#{scope}&state=#{state}#wechat_redirect"
+      end
+
+      def get_oauth_userinfo code
+        get 'user/getuserinfo', params: {code: code}
+      end
 
       def get_info
         get 'agent/get', params: {agentid: agent_id}
