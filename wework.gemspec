@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["sindon@gmail.com"]
 
   spec.summary       = spec.description = %q{Ruby API wrapper for work wechat.}
-  spec.homepage      = "https://github.com/seandong/wework"
+  spec.homepage      = "https://github.com/mycolorway/wework"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
