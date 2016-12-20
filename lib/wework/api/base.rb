@@ -1,6 +1,9 @@
 require 'wework/token/store'
 require 'wework/token/redis_store'
 
+require 'wework/js_ticket/store'
+require 'wework/js_ticket/redis_store'
+
 module Wework
   module Api
     class Base
@@ -9,6 +12,7 @@ module Wework
       attr_accessor :options
 
       delegate :access_token, to: :token_store
+      delegate :jsapi_ticket, to: :jsticket_store
 
       def initialize(corp_id, app_id, app_secret, options={})
         @corp_id      = corp_id
@@ -19,6 +23,10 @@ module Wework
 
       def token_store
         @token_store ||= Token::RedisStore.new self
+      end
+
+      def jsticket_store
+        @jsticket_store ||= JsTicket::RedisStore.new self
       end
 
       def request

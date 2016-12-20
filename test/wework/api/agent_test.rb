@@ -16,6 +16,10 @@ class Wework::Api::AgentTest < Minitest::Test
     assert agent.authorize_url('https://zhiren.com')
   end
 
+  def test_jsapi_ticket
+    assert agent.jsapi_ticket
+  end
+
   # def test_access_token
   #   assert agent.access_token
   # end
