@@ -2,6 +2,22 @@
 
 Wework is a ruby API wrapper for work wechat.
 
+
+## Version 0.1.3
+
+* `access_token` 和 `jsapi_ticket` 管理存储 (默认 redis, 支持其它扩展)
+* 通信录相关接口 [Wework::Api::Contact](https://github.com/mycolorway/wework/blob/master/lib/wework/api/contract.rb)
+* 企业微信应用接口 [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/master/lib/wework/api/agent.rb)
+* API 集成 [Wework::Engine](https://github.com/mycolorway/wework/blob/master/lib/wework/engine.rb)
+* 网页授权及[JS-SDK签名算法](https://work.weixin.qq.com/api/doc#10029/附录1-JS-SDK使用权限签名算法)
+
+### TODO：
+
+* 完善测试用例
+* 异步任务接口 [doc](https://work.weixin.qq.com/api/doc#10138)
+* 消息接收 [doc](https://work.weixin.qq.com/api/doc#10427)
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
