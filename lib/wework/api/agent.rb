@@ -14,6 +14,20 @@ module Wework
         get 'user/getuserinfo', params: {code: code}
       end
 
+      def get_jssign_package url
+        timestamp = Time.now.to_i
+        noncestr = SecureRandom.hex(8)
+        str = "jsapi_ticket=#{jsapi_ticket}&noncestr=#{noncestr}&timestamp=#{timestamp}&url=#{url}"
+        {
+          "appId"     => app_id,
+          "nonceStr"  => noncestr,
+          "timestamp" => timestamp,
+          "url"       => url,
+          "signature" => Digest::SHA1.hexdigest(str),
+          "rawString" => str
+        }
+      end
+
       def get_info
         get 'agent/get', params: {agentid: agent_id}
       end

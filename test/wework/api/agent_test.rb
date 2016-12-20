@@ -20,6 +20,12 @@ class Wework::Api::AgentTest < Minitest::Test
     assert agent.jsapi_ticket
   end
 
+  def test_jssign_package
+    package = agent.get_jssign_package('https://zhiren.com')
+    assert_instance_of Hash, package
+    assert_includes package.keys, 'signature'
+  end
+
   # def test_access_token
   #   assert agent.access_token
   # end
