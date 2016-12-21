@@ -7,6 +7,7 @@ require 'wework/js_ticket/redis_store'
 module Wework
   module Api
     class Base
+      include Wework::Cipher
 
       attr_reader :corp_id, :app_id, :app_secret
       attr_accessor :options
@@ -19,14 +20,6 @@ module Wework
         @app_id       = app_id
         @app_secret   = app_secret
         @options      = options
-      end
-
-      def token_store
-        @token_store ||= Token::RedisStore.new self
-      end
-
-      def jsticket_store
-        @jsticket_store ||= JsTicket::RedisStore.new self
       end
 
       def request
@@ -51,12 +44,31 @@ module Wework
         end
       end
 
+      # public API
+      def media_upload type, file
+        post_file 'media/upload', file, params: { type: type }
+      end
+
+      def media_get(media_id)
+        get 'media/get', params: { media_id: media_id }, as: :file
+      end
+
+      private
+
       def with_access_token(params = {}, tries = 2)
         params ||= {}
         yield(params.merge(access_token: access_token))
       rescue AccessTokenExpiredError
         token_store.refresh_token
         retry unless (tries -= 1).zero?
+      end
+
+      def token_store
+        @token_store ||= Token::RedisStore.new self
+      end
+
+      def jsticket_store
+        @jsticket_store ||= JsTicket::RedisStore.new self
       end
     end
   end

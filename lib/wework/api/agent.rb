@@ -44,14 +44,6 @@ module Wework
         get 'menu/delete', params: {agentid: agent_id}
       end
 
-      def media_upload type, file
-        post_file 'media/upload', file, params: { type: type }
-      end
-
-      def media_get(media_id)
-        get 'media/get', params: { media_id: media_id }, as: :file
-      end
-
       def message_send user_ids, department_ids, payload={}
         payload[:agentid] = agent_id
         payload[:touser] = Array.wrap(user_ids).join('|') if user_ids.present?
@@ -87,9 +79,12 @@ module Wework
         message_send user_ids, department_ids, {news: {articles: news}, msgtype: 'news'}
       end
 
+      private
+
       def agent_id
         @app_id.to_i
       end
+
     end
   end
 end
