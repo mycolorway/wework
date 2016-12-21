@@ -71,8 +71,9 @@ module Wework
       def batch_params media_id, callback_url, token, encodingaeskey
         params = {media_id: media_id}
         if callback_url.present? && token.present? && encodingaeskey.present?
-          params[:callback] = {url: callback, token: token, encodingaeskey: encodingaeskey}
+          params[:callback] = {url: callback_url, token: token, encodingaeskey: encodingaeskey}
         end
+
         params
       end
     end
