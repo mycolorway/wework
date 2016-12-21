@@ -19,34 +19,39 @@ class Wework::Api::ContactTest < Minitest::Test
   # def test_batch_syncuser
   #   token ='165ff8e819520f8ae8a0000c447c0d91'
   #   encodingaeskey = '7503e83ad9c081f91730e1f3713767b651072a077e861'
-  #   media_id = '1_T9WQvN9RmZEwuOVFmhu62Nw5B0KtHcgjepcYBNsle0'
+  #   media_id = '1qZiLuycGBqpv0WrRsAKwqO5JpLminD17hsTDIsu8JxE'
   #   puts contact.batch_syncuser(media_id, 'https://zhiren.com/test', token, encodingaeskey)
   # end
 
   # def test_batch_getresult
-  #   puts contact.batch_getresult('3_1482312132_137596')
+  #   puts contact.batch_getresult('3_1482328020_152159')
   # end
 
   # def test_user_create
   #   info = {
-  #     'userid' => 'zhangsan',
-  #     'name' => '张三',
-  #     'english_name' => 'jackzhang',
-  #     'mobile' => '15913215421',
+  #     'userid' => 'lili1983',
+  #     'name' => '李丽',
+  #     'english_name' => 'lili1983',
+  #     'mobile' => '13438802101',
   #     'department' => [1, 2],
-  #     'order' => [10,40],
-  #     'position' => '产品经理',
+  #     #'order' => [10,40],
+  #     'position' => '工程师',
   #     'gender' => '1',
-  #     'email' => 'zhangsan@gzdev.com',
-  #     'isleader' => 1,
-  #     'avatar_mediaid' => '2-G6nrLmr5EC3MNb_-zL1dDdzkd0p7cNliYu9V5w7o8K0',
+  #     'email' => '22705030@qq.com',
+  #     #'isleader' => 1,
+  #     #'avatar_mediaid' => '2-G6nrLmr5EC3MNb_-zL1dDdzkd0p7cNliYu9V5w7o8K0',
   #     'telephone' => '13438802101',
   #     'extattr' => {'attrs' => [{'name' => '爱好','value' => '旅游'}]},
   #     'hide_mobile' => 0
   #   }
 
-  #   result = contact.user_create info
+  #   result = contact.user_create 'lili1983', '李丽', '13438802101', [1, 2], info
   #   puts result
+  # end
+
+  # def test_user_delete
+  #   result = contact.user_delete 'lili1983'
+  #   p result
   # end
 
   # def test_user_update
