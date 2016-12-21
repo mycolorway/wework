@@ -12,6 +12,21 @@ class Wework::Api::ContactTest < Minitest::Test
     assert contact.access_token
   end
 
+  # def test_batch_replaceparty
+  #   result = contact.media_upload('file', File.join(File.dirname(__FILE__), '../../fixtures/party.csv'))
+  #   p result
+  #   assert result.media_id
+
+  #   media_id = result.media_id
+  #   token ='165ff8e819520f8ae8a0000c447c0d91'
+  #   encodingaeskey = '7503e83ad9c081f91730e1f3713767b651072a077e861'
+  #   result = contact.batch_replaceparty(media_id, 'https://zhiren.com/test', token, encodingaeskey)
+  #   p result
+  #   assert result.jobid
+
+  #   puts contact.batch_getresult(result.jobid)
+  # end
+
   # def test_media_upload
   #   #puts contact.media_upload('file', File.join(File.dirname(__FILE__), '../../fixtures/user.csv'))
   #   puts contact.media_upload('file', File.join(File.dirname(__FILE__), '../../fixtures/party.csv'))
@@ -22,17 +37,6 @@ class Wework::Api::ContactTest < Minitest::Test
   #   encodingaeskey = '7503e83ad9c081f91730e1f3713767b651072a077e861'
   #   media_id = '1qZiLuycGBqpv0WrRsAKwqO5JpLminD17hsTDIsu8JxE'
   #   puts contact.batch_syncuser(media_id, 'https://zhiren.com/test', token, encodingaeskey)
-  # end
-
-  # def test_batch_replaceparty
-  #   token ='165ff8e819520f8ae8a0000c447c0d91'
-  #   encodingaeskey = '7503e83ad9c081f91730e1f3713767b651072a077e861'
-  #   media_id = '1_6qVfK98enLrH0qlkvl5osrN05YP5qiv00SuZ2H4xhY'
-  #   puts contact.batch_replaceparty(media_id, 'https://zhiren.com/test', token, encodingaeskey)
-  # end
-
-  # def test_batch_getresult
-  #   puts contact.batch_getresult('1_1482328971_212164')
   # end
 
   # def test_user_create
@@ -76,10 +80,10 @@ class Wework::Api::ContactTest < Minitest::Test
   #   p result
   # end
 
-  # def test_user_get
-  #   result = contact.user_get 'seandong'
-  #   p result
-  # end
+  def test_user_get
+    result = contact.user_get 'seandong'
+    p result
+  end
 
   # def test_department_list
   #   result = contact.department_list
