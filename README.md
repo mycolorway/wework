@@ -2,6 +2,8 @@
 
 Wework is a ruby API wrapper for work wechat.
 
+## Version 0.1.4
+* 异步任务接口 [doc](https://work.weixin.qq.com/api/doc#10138)
 
 ## Version 0.1.3
 
@@ -14,7 +16,6 @@ Wework is a ruby API wrapper for work wechat.
 ### TODO：
 
 * 完善测试用例
-* 异步任务接口 [doc](https://work.weixin.qq.com/api/doc#10138)
 * 消息接收 [doc](https://work.weixin.qq.com/api/doc#10427)
 
 
