@@ -62,7 +62,7 @@ module Wework
         post 'batch/replaceparty', batch_params(media_id, callback_url, token, encodingaeskey)
       end
 
-      def batch_getresult job_id
+      def batch_getresult
         get 'batch/getresult', params: {jobid: job_id}
       end
 
