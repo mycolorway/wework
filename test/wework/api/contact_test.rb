@@ -85,11 +85,11 @@ class Wework::Api::ContactTest < Minitest::Test
     p result
   end
 
-  # def test_department_list
-  #   result = contact.department_list
-  #   assert result.success?
-  #   p result
-  # end
+  def test_department_list
+    result = contact.department_list
+    assert result.success?
+    p result
+  end
 
   # def test_department_delete
   #   result = contact.department_delete 1
