@@ -13,8 +13,8 @@ require 'wework/api/contact'
 module Wework
   API_ENDPOINT        = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze
   AUTHORIZE_ENDPOINT  = 'https://open.weixin.qq.com/connect/oauth2/authorize'.freeze
-  ACCESS_TOKEN_PREFIX = 'TOKEN'.freeze
-  JSAPI_TOKEN_PREFIX  = 'JST'.freeze
+  ACCESS_TOKEN_PREFIX = 'WX_TOKEN'.freeze
+  JSAPI_TOKEN_PREFIX  = 'WX_JST'.freeze
   CONTACT_AGENT_ID    = 'CONTACT'.freeze
   HTTP_OK_STATUS      = [200, 201].freeze
   SUCCESS_CODE        = 0

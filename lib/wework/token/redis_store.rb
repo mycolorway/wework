@@ -18,15 +18,16 @@ module Wework
 
       def refresh_token
         result = super
+        if result.success?
+          expires_at = Time.now.to_i + result.expires_in.to_i - 100
+          redis.hmset(
+            key,
+            "access_token", result.access_token,
+            "expires_at", expires_at
+          )
 
-        expires_at = Time.now.to_i + result['expires_in'].to_i - 100
-        redis.hmset(
-          key,
-          "access_token", result['access_token'],
-          "expires_at", expires_at
-        )
-
-        redis.expireat(key, expires_at)
+          redis.expireat(key, expires_at)
+        end
       end
 
       private

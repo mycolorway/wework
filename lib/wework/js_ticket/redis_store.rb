@@ -9,7 +9,7 @@ module Wework
 
       def jsapi_ticket
         super
-        redis.hget(key, "jsapi_ticket")
+        redis.hget(key, "ticket")
       end
 
       def expired?
@@ -18,14 +18,16 @@ module Wework
 
       def refresh_token
         result = super
-        expires_at = Time.now.to_i + result['expires_in'].to_i - 100
-        redis.hmset(
-          key,
-          "jsapi_ticket", result['ticket'],
-          "expires_at", expires_at
-        )
+        if result.success?
+          expires_at = Time.now.to_i + result.expires_in.to_i - 100
+          redis.hmset(
+            key,
+            "ticket", result.ticket,
+            "expires_at", expires_at
+          )
 
-        redis.expireat(key, expires_at)
+          redis.expireat(key, expires_at)
+        end
       end
 
       private
