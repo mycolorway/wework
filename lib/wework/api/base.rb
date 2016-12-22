@@ -26,6 +26,10 @@ module Wework
         @request ||= Wework::Request.new(API_ENDPOINT, false)
       end
 
+      def valid?
+        access_token.present?
+      end
+
       def get(path, headers = {})
         with_access_token(headers[:params]) do |params|
           request.get path, headers.merge(params: params)
