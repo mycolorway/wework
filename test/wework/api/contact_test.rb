@@ -41,32 +41,19 @@ class Wework::Api::ContactTest < Minitest::Test
 
   # def test_user_create
   #   info = {
-  #     'english_name' => 'tinyfive',
-  #     'position' => '工程师',
+  #     userid: 'Keeperlove123',
+  #     name: '吴松林',
+  #     mobile: '+16479897753',
+  #     department: [1, 2],
+  #     english_name: 'tinyfive',
+  #     position: '工程师',
   #   }
-  #   result = contact.user_create 'Keeperlove', '吴松林', '+16479897753', [1, 2], info
-  #   puts result
-  # end
-
-  # def test_user_create
-  #   info = {
-  #     #'order' => [10,40],
-  #     'position' => '工程师',
-  #     'gender' => '1',
-  #     #'email' => '22705030@qq.com',
-  #     #'isleader' => 1,
-  #     #'avatar_mediaid' => '2-G6nrLmr5EC3MNb_-zL1dDdzkd0p7cNliYu9V5w7o8K0',
-  #     'telephone' => '+16479897753',
-  #     'extattr' => {'attrs' => [{'name' => '爱好','value' => '旅游'}]},
-  #     'hide_mobile' => 0
-  #   }
-
-  #   result = contact.user_create 'lili', '李丽', '13438802101', [1, 2], info
+  #   result = contact.user_create info
   #   puts result
   # end
 
   # def test_user_delete
-  #   result = contact.user_delete 'seandong'
+  #   result = contact.user_delete 'Keeperlove'
   #   p result
   # end
 

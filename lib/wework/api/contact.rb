@@ -6,8 +6,8 @@ module Wework
         super(corp_id, CONTACT_AGENT_ID, corp_secret)
       end
 
-      def user_create userid, name, mobile, department, data={}
-        post 'user/create', data.merge(userid: userid, name: name, mobile: mobile, department: department)
+      def user_create data={}
+        post 'user/create', data
       end
 
       def user_get userid
