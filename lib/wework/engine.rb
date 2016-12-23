@@ -10,8 +10,8 @@ module Wework
       @app_secret = options[:app_secret]
     end
 
-    def contract
-      @contract ||= Wework::Api::Contact.new(corp_id, corp_secret) if contract?
+    def contact
+      @contact ||= Wework::Api::Contact.new(corp_id, corp_secret) if contact?
     end
 
     def agent
@@ -24,7 +24,7 @@ module Wework
       corp_id.present? && app_id.present? && app_secret.present?
     end
 
-    def contract?
+    def contact?
       corp_id.present? && corp_secret.present?
     end
   end

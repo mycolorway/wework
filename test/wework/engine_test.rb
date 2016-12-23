@@ -13,8 +13,8 @@ class Wework::EngineTest < Minitest::Test
     )
   end
 
-  def test_contract_is_valid
-    assert engine.contract
+  def test_contact_is_valid
+    assert engine.contact
   end
 
   def test_agent_is_valid
