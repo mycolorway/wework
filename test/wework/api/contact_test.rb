@@ -41,10 +41,10 @@ class Wework::Api::ContactTest < Minitest::Test
 
   # def test_user_create
   #   info = {
-  #     userid: 'Keeperlove123',
+  #     userid: 'Keeperlove',
   #     name: '吴松林',
   #     mobile: '+16479897753',
-  #     department: [1, 2],
+  #     department: [1],
   #     english_name: 'tinyfive',
   #     position: '工程师',
   #   }
@@ -53,8 +53,11 @@ class Wework::Api::ContactTest < Minitest::Test
   # end
 
   # def test_user_delete
-  #   result = contact.user_delete 'Keeperlove'
-  #   p result
+  #   userids = ["AlfredWu", "Betty", "calf", "chenhang", "farthinker", "frankfang", "HeroicYang", "ichord", "leimeng", "manfred", "mybeky", "Sebrina", "yanbi", "terry", "terry", "lili1983", "seandong", "zhangxiaobei", "zhangxiaobei", "xuzheng", "xuzheng", "Keeperlove", "0dcdb2f3e38f65fa34ae70a2971699cc", "d9e423258cfb2a5105f0c77828694f8d", "d027d9c1f56e23d773ea833d78881a4d", "41addb23cec030a475235d8b7f9aa172", "47e455bdf8323361e12049aac3e0983c", "10a13333cf6d90c2d5a8144e97e66caa", "ddf126cdb3d22328fb7bfc09456aa726", "ced3a577dc22baec0facfdb42ee91cfb"]
+  #   userids.each do |userid|
+  #     result = contact.user_delete userid
+  #     p result
+  #   end
   # end
 
   # def test_user_update
@@ -69,6 +72,8 @@ class Wework::Api::ContactTest < Minitest::Test
   # def test_user_list
   #   result = contact.user_list 1, 1
   #   p result
+
+  #   p result.userlist.map{|u| u['userid']}
   # end
 
   # def test_user_get
@@ -88,7 +93,7 @@ class Wework::Api::ContactTest < Minitest::Test
   # end
 
   # def test_department_create
-  #   result = contact.department_create '工程组', 1
+  #   result = contact.department_create {name: '工程组', id: 123, parentid: 1}
   #   assert result.success?
   # end
 end

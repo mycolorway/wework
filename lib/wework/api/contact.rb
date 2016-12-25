@@ -34,8 +34,8 @@ module Wework
         get 'user/list', params: {department_id: department_id, fetch_child: fetch_child}
       end
 
-      def department_create name, parentid=0, data={}
-        post 'department/create', data.merge(name: name, parentid: parentid)
+      def department_create data={}
+        post 'department/create', data
       end
 
       def department_update department_id, data={}
