@@ -94,6 +94,10 @@ module Wework
       [42001, 40014, 40001].include?(errcode)
     end
 
+    def throw_error
+      raise ResultErrorException.new(full_message) unless success?
+    end
+
     def success?
       errcode == SUCCESS_CODE
     end
