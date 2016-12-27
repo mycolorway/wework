@@ -12,19 +12,19 @@ class Wework::Api::AgentTest < Minitest::Test
     @video_media_id = '1KPqSJKKdQ7qmTeoK4Nhd80P7loOaiPoI29xrXuF-e4ywY-HHzIHKFHvH7b4N0gaA'
   end
 
-  def test_authorize_url
-    assert agent.authorize_url('https://zhiren.com')
-  end
+  # def test_authorize_url
+  #   assert agent.authorize_url('https://zhiren.com')
+  # end
 
-  def test_jsapi_ticket
-    assert agent.jsapi_ticket
-  end
+  # def test_jsapi_ticket
+  #   assert agent.jsapi_ticket
+  # end
 
-  def test_jssign_package
-    package = agent.get_jssign_package('https://zhiren.com')
-    assert_instance_of Hash, package
-    assert_includes package.keys, 'signature'
-  end
+  # def test_jssign_package
+  #   package = agent.get_jssign_package('https://zhiren.com')
+  #   assert_instance_of Hash, package
+  #   assert_includes package.keys, 'signature'
+  # end
 
   # def test_access_token
   #   assert agent.access_token
@@ -35,7 +35,9 @@ class Wework::Api::AgentTest < Minitest::Test
   # end
 
   # def test_set_info
-  #   puts agent.set_info(name: '知人')
+  #   result = agent.media_upload('image', File.join(File.dirname(__FILE__), '../../fixtures/zhiren.png'))
+  #   p result
+  #   puts agent.set_info(name: '知人v2', redirect_domain: 'zhirenhr.com', description: '智能人力资源管理专家', logo_mediaid: result.media_id)
   # end
 
   # def test_menu_create
@@ -80,7 +82,7 @@ class Wework::Api::AgentTest < Minitest::Test
   # end
 
   # def test_video_message_send
-  #   puts agent.video_message_send '@all', '', @video_media_id, '测试', '来自API的测试视频'
+  #   puts agent.video_message_send '@all', '', {media_id: @video_media_id, title: '测试', description: '来自API的测试视频'}
   # end
 
   # def test_file_message_send
@@ -88,7 +90,13 @@ class Wework::Api::AgentTest < Minitest::Test
   # end
   #
   # def test_textcard_message_send
-  #   puts agent.textcard_message_send '@all', '', "领奖通知", "<div class=\"gray\">2016年9月26日</div> <div class=\"normal\">恭喜你抽中iPhone 7一台，领奖码：xxxx</div><div class=\"highlight\">请于2016年10月10日前联系行政同事领取</div>", 'https://zhiren.com', '查看详情'
+  #   text_card = {
+  #     title: "领奖通知",
+  #     description: "<div class=\"gray\">2016年9月26日</div> <div class=\"normal\">恭喜你抽中iPhone 7一台，领奖码：xxxx</div><div class=\"highlight\">请于2016年10月10日前联系行政同事领取</div>",
+  #     url: 'https://zhiren.com',
+  #     btn: '查看详情'
+  #   }
+  #   p agent.textcard_message_send '@all', '', text_card
   # end
 
   # def test_news_message_send

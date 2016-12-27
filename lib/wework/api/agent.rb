@@ -67,12 +67,12 @@ module Wework
         message_send user_ids, department_ids, {file: {media_id: media_id}, msgtype: 'file'}
       end
 
-      def video_message_send user_ids, department_ids, media_id, title='', description=''
-        message_send user_ids, department_ids, {video: {media_id: media_id, title: 'title', description: description}, msgtype: 'video'}
+      def video_message_send user_ids, department_ids, video={}
+        message_send user_ids, department_ids, {video: video, msgtype: 'video'}
       end
 
-      def textcard_message_send user_ids, department_ids, title, description, url, btntxt='详情'
-        message_send user_ids, department_ids, {textcard: {title: title, description: description, url: url, btntxt: btntxt}, msgtype: 'textcard'}
+      def textcard_message_send user_ids, department_ids, textcard={}
+        message_send user_ids, department_ids, {textcard: textcard, msgtype: 'textcard'}
       end
 
       def news_message_send user_ids, department_ids, news=[]
