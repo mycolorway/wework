@@ -58,12 +58,12 @@ class Wework::Api::AgentTest < Minitest::Test
   #   puts agent.menu_delete
   # end
 
-  def test_media_upload
-    #puts agent.media_upload('image', File.join(File.dirname(__FILE__), '../../fixtures/zhiren.png'))
-    #puts agent.media_upload('image', File.join(File.dirname(__FILE__), '../../fixtures/sample.txt'))
-    #puts agent.media_upload('voice', File.join(File.dirname(__FILE__), '../../fixtures/sample.amr'))
-    #puts agent.media_upload('video', File.join(File.dirname(__FILE__), '../../fixtures/sample.mp4'))
-  end
+  # def test_media_upload
+  #   puts agent.media_upload('image', File.join(File.dirname(__FILE__), '../../fixtures/zhiren.png'))
+  #   puts agent.media_upload('image', File.join(File.dirname(__FILE__), '../../fixtures/sample.txt'))
+  #   puts agent.media_upload('voice', File.join(File.dirname(__FILE__), '../../fixtures/sample.amr'))
+  #   puts agent.media_upload('video', File.join(File.dirname(__FILE__), '../../fixtures/sample.mp4'))
+  # end
 
   # def test_media_get
   #   puts agent.media_get @image_media_id

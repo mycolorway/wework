@@ -7,7 +7,7 @@ module Wework
 
     def initialize(base, skip_verify_ssl)
       @base = base
-      @httprb = HTTP.timeout(:global, **Wework.http_timeout_options)
+      @httprb = HTTP.timeout(**Wework.http_timeout_options)
       @ssl_context = OpenSSL::SSL::SSLContext.new
       @ssl_context.ssl_version = :TLSv1_client
       @ssl_context.verify_mode = OpenSSL::SSL::VERIFY_NONE if skip_verify_ssl
@@ -83,7 +83,8 @@ module Wework
 
   class Result < OpenStruct
     def initialize(data)
-      data['full_message'] = "(#{data['errcode']}) #{data['errmsg']}"
+      data['message'] = GLOBAL_CODES[data['errcode'].to_i]
+      data['full_message'] = "#{data['errcode']}：#{data['errmsg']}（#{data['message']}）"
       super data
     end
 
@@ -95,7 +96,7 @@ module Wework
     end
 
     def throw_error
-      raise ResultErrorException.new(errmsg) unless success?
+      raise ResultErrorException.new(message || errmsg) unless success?
     end
 
     def success?

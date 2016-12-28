@@ -15,7 +15,7 @@ module Wework
     end
 
     def http_timeout_options
-      config.http_timeout_options || {write: 5, connect: 5, read: 5}
+      config.http_timeout_options || {write: 2, connect: 5, read: 10}
     end
   end
 
