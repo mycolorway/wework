@@ -19,7 +19,7 @@ module Wework
         noncestr = SecureRandom.hex(8)
         str = "jsapi_ticket=#{jsapi_ticket}&noncestr=#{noncestr}&timestamp=#{timestamp}&url=#{url}"
         {
-          "appId"     => app_id,
+          "appId"     => corp_id,
           "nonceStr"  => noncestr,
           "timestamp" => timestamp,
           "url"       => url,

@@ -24,6 +24,7 @@ class Wework::Api::AgentTest < Minitest::Test
   #   package = agent.get_jssign_package('https://zhiren.com')
   #   assert_instance_of Hash, package
   #   assert_includes package.keys, 'signature'
+  #   assert_equal ENV['CORP_ID'], package['appId']
   # end
 
   # def test_access_token
