@@ -40,6 +40,10 @@ module Wework
         post 'menu/create', menu, params: {agentid: agent_id}
       end
 
+      def menu_get
+        get 'menu/get', params: {agentid: agent_id}
+      end
+
       def menu_delete
         get 'menu/delete', params: {agentid: agent_id}
       end

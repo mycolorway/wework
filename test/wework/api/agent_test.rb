@@ -4,13 +4,13 @@ class Wework::Api::AgentTest < Minitest::Test
 
   attr_reader :agent
 
-  def setup
-    @agent = Wework::Api::Agent.new(ENV['CORP_ID'], ENV['APP_ID'], ENV['APP_SECRET'])
-    @image_media_id = '1t7ArQ9p2kkebFgIhl5AV0R0GW0Um14sF8LhF1WQ_ZyDIx_5gunSGsI-OZWMc3-cC'
-    @file_media_id = '1gzwVHjceHuh-n6YljtcTmmENyxIBh16BVRRFH4yu9Ss'
-    @voice_media_id = '1_ESizV0Qiw1LQAxt-LWYJK23-5u5RDKYXQQ9M5fDBV5PNoWGMGsea5A9vOVWgmGi'
-    @video_media_id = '1KPqSJKKdQ7qmTeoK4Nhd80P7loOaiPoI29xrXuF-e4ywY-HHzIHKFHvH7b4N0gaA'
-  end
+  # def setup
+  #   @agent = Wework::Api::Agent.new(ENV['CORP_ID'], ENV['APP_ID'], ENV['APP_SECRET'])
+  #   @image_media_id = '1t7ArQ9p2kkebFgIhl5AV0R0GW0Um14sF8LhF1WQ_ZyDIx_5gunSGsI-OZWMc3-cC'
+  #   @file_media_id = '1gzwVHjceHuh-n6YljtcTmmENyxIBh16BVRRFH4yu9Ss'
+  #   @voice_media_id = '1_ESizV0Qiw1LQAxt-LWYJK23-5u5RDKYXQQ9M5fDBV5PNoWGMGsea5A9vOVWgmGi'
+  #   @video_media_id = '1KPqSJKKdQ7qmTeoK4Nhd80P7loOaiPoI29xrXuF-e4ywY-HHzIHKFHvH7b4N0gaA'
+  # end
 
   # def test_authorize_url
   #   assert agent.authorize_url('https://zhiren.com')
@@ -92,8 +92,8 @@ class Wework::Api::AgentTest < Minitest::Test
   #
   # def test_textcard_message_send
   #   text_card = {
-  #     title: "领奖通知",
-  #     description: "<div class=\"gray\">2016年9月26日</div> <div class=\"normal\">恭喜你抽中iPhone 7一台，领奖码：xxxx</div><div class=\"highlight\">请于2016年10月10日前联系行政同事领取</div>",
+  #     title: "测试通知",
+  #     description: "<div class=\"gray\">2016年9月26日</div><br/><br/><br/><br/><div class=\"normal\">大字体呀</div><div class=\"highlight\">我是居中的...</div>",
   #     url: 'https://zhiren.com',
   #     btn: '查看详情'
   #   }

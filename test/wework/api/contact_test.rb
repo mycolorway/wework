@@ -4,9 +4,9 @@ class Wework::Api::ContactTest < Minitest::Test
 
   attr_reader :contact
 
-  def setup
-    @contact = Wework::Api::Contact.new(ENV['CORP_ID'], ENV['CORP_SECRET'])
-  end
+  # def setup
+  #   @contact = Wework::Api::Contact.new(ENV['CORP_ID'], ENV['CORP_SECRET'])
+  # end
 
   # def test_access_token
   #   assert contact.access_token
@@ -53,7 +53,7 @@ class Wework::Api::ContactTest < Minitest::Test
   # end
 
   # def test_user_delete
-  #   userids = ["AlfredWu", "Betty", "calf", "chenhang", "farthinker", "frankfang", "HeroicYang", "ichord", "leimeng", "manfred", "mybeky", "Sebrina", "yanbi", "terry", "terry", "lili1983", "seandong", "zhangxiaobei", "zhangxiaobei", "xuzheng", "xuzheng", "Keeperlove", "0dcdb2f3e38f65fa34ae70a2971699cc", "d9e423258cfb2a5105f0c77828694f8d", "d027d9c1f56e23d773ea833d78881a4d", "41addb23cec030a475235d8b7f9aa172", "47e455bdf8323361e12049aac3e0983c", "10a13333cf6d90c2d5a8144e97e66caa", "ddf126cdb3d22328fb7bfc09456aa726", "ced3a577dc22baec0facfdb42ee91cfb"]
+  #   userids = ["seandong"]
   #   userids.each do |userid|
   #     result = contact.user_delete userid
   #     p result
@@ -61,7 +61,7 @@ class Wework::Api::ContactTest < Minitest::Test
   # end
 
   # def test_user_update
-  #   puts contact.user_update 'seandong123', {department: [20]}
+  #   p contact.user_update 'seandong', {mobile: '18683689944'}
   # end
 
   # def test_user_simplelist
@@ -77,7 +77,7 @@ class Wework::Api::ContactTest < Minitest::Test
   # end
 
   # def test_user_get
-  #   result = contact.user_get 'seand1ong'
+  #   result = contact.user_get '145ab09f09ba2adf676447d90ebb0c71'
   #   p result
   # end
 
