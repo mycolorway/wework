@@ -28,6 +28,8 @@ module Wework
 
       def valid?
         access_token.present?
+      rescue AccessTokenExpiredError
+        false
       end
 
       def get(path, headers = {})
