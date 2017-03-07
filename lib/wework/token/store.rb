@@ -17,7 +17,12 @@ module Wework
       end
 
       def refresh_token
-        app.request.get 'gettoken', params: {corpid: app.corp_id, corpsecret: app.app_secret}
+        result = app.request.get 'gettoken', params: {corpid: app.corp_id, corpsecret: app.app_secret}
+        if defined?(Rails)
+          Rails.logger.warn "[WEWORK] refresh Token(#{app.corp_id}): #{result.inspect}"
+        end
+
+        result
       end
 
       private

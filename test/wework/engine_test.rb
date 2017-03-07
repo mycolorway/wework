@@ -14,10 +14,10 @@ class Wework::EngineTest < Minitest::Test
   end
 
   def test_contact_is_valid
-    assert engine.contact
+    assert engine.contact.valid?
   end
 
   def test_agent_is_valid
-    assert engine.agent
+    assert engine.agent.valid?
   end
 end

@@ -4,21 +4,21 @@ class Wework::Api::AgentTest < Minitest::Test
 
   attr_reader :agent
 
-  # def setup
-  #   @agent = Wework::Api::Agent.new(ENV['CORP_ID'], ENV['APP_ID'], ENV['APP_SECRET'])
-  #   @image_media_id = '1t7ArQ9p2kkebFgIhl5AV0R0GW0Um14sF8LhF1WQ_ZyDIx_5gunSGsI-OZWMc3-cC'
-  #   @file_media_id = '1gzwVHjceHuh-n6YljtcTmmENyxIBh16BVRRFH4yu9Ss'
-  #   @voice_media_id = '1_ESizV0Qiw1LQAxt-LWYJK23-5u5RDKYXQQ9M5fDBV5PNoWGMGsea5A9vOVWgmGi'
-  #   @video_media_id = '1KPqSJKKdQ7qmTeoK4Nhd80P7loOaiPoI29xrXuF-e4ywY-HHzIHKFHvH7b4N0gaA'
-  # end
+  def setup
+    @agent = Wework::Api::Agent.new(ENV['CORP_ID'], ENV['APP_ID'], ENV['APP_SECRET'])
+    # @image_media_id = '1t7ArQ9p2kkebFgIhl5AV0R0GW0Um14sF8LhF1WQ_ZyDIx_5gunSGsI-OZWMc3-cC'
+    # @file_media_id = '1gzwVHjceHuh-n6YljtcTmmENyxIBh16BVRRFH4yu9Ss'
+    # @voice_media_id = '1_ESizV0Qiw1LQAxt-LWYJK23-5u5RDKYXQQ9M5fDBV5PNoWGMGsea5A9vOVWgmGi'
+    # @video_media_id = '1KPqSJKKdQ7qmTeoK4Nhd80P7loOaiPoI29xrXuF-e4ywY-HHzIHKFHvH7b4N0gaA'
+  end
 
-  # def test_authorize_url
-  #   assert agent.authorize_url('https://zhiren.com')
-  # end
+  def test_authorize_url
+    assert agent.authorize_url('https://zhiren.com')
+  end
 
-  # def test_jsapi_ticket
-  #   assert agent.jsapi_ticket
-  # end
+  def test_jsapi_ticket
+    assert agent.jsapi_ticket
+  end
 
   # def test_jssign_package
   #   package = agent.get_jssign_package('https://zhiren.com')

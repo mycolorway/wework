@@ -4,13 +4,13 @@ class Wework::Api::ContactTest < Minitest::Test
 
   attr_reader :contact
 
-  # def setup
-  #   @contact = Wework::Api::Contact.new(ENV['CORP_ID'], ENV['CORP_SECRET'])
-  # end
+  def setup
+    @contact = Wework::Api::Contact.new(ENV['CORP_ID'], ENV['CORP_SECRET'])
+  end
 
-  # def test_access_token
-  #   assert contact.access_token
-  # end
+  def test_access_token
+    assert contact.access_token
+  end
 
   # def test_batch_replaceparty
   #   result = contact.media_upload('file', File.join(File.dirname(__FILE__), '../../fixtures/party.csv'))

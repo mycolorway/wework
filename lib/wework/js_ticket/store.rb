@@ -17,7 +17,12 @@ module Wework
       end
 
       def refresh_token
-        app.get 'get_jsapi_ticket'
+        result = app.get 'get_jsapi_ticket'
+        if defined?(Rails)
+          Rails.logger.warn "[WEWORK] refresh JsTicket(#{app.corp_id}): #{result.inspect}"
+        end
+
+        result
       end
 
       private
