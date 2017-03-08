@@ -17,9 +17,13 @@ module Wework
     def http_timeout_options
       config.http_timeout_options || {write: 2, connect: 5, read: 10}
     end
+
+    def expired_shift_seconds
+      config.expired_shift_seconds || 100
+    end
   end
 
   class Config
-    attr_accessor :redis, :http_timeout_options
+    attr_accessor :redis, :http_timeout_options, :expired_shift_seconds
   end
 end
