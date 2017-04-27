@@ -9,3 +9,4 @@
 /tmp/
 *.gem
 config.yml
+.DS_Store
