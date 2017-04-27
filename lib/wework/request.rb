@@ -49,7 +49,7 @@ module Wework
       raise ResponseError.new(response.status) unless HTTP_OK_STATUS.include?(response.status)
 
       parse_response(response, as || :json) do |parse_as, data|
-        break data unless parse_as == :json && data['errcode'].present?
+        break data unless parse_as == :json
         result = Wework::Result.new(data)
         raise AccessTokenExpiredError if result.token_expired?
         result
