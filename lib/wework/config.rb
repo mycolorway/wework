@@ -1,7 +1,6 @@
 module Wework
 
   class << self
-    attr_accessor :config
     def configure
       yield config
     end
