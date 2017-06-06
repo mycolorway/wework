@@ -18,7 +18,7 @@ module Wework
 
       def refresh_token
         result = super
-        if result.success?
+        unless result.ticket.nil?
           expires_at = Time.now.to_i + result.expires_in.to_i - Wework.expired_shift_seconds
           redis.hmset(
             key,
