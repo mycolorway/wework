@@ -30,6 +30,9 @@ module Wework
         access_token.present?
       rescue AccessTokenExpiredError
         false
+      rescue => e
+        Rails.logger.error "[WEWORK] (valid?) fetch access token error(#{corp_id}##{app_id}): #{e.inspect}" if defined?(Rails)
+        false
       end
 
       def get(path, headers = {})
