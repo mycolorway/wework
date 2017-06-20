@@ -2,7 +2,7 @@ require 'wework/token/base'
 
 module Wework
   module Token
-    class SuitToken < Base
+    class SuiteToken < Base
 
       def redis_key
         @redis_key ||= Digest::MD5.hexdigest "WX_SUITE_TOKEN_#{client.suite_id}"
@@ -13,7 +13,7 @@ module Wework
       end
 
       def refresh_token
-        client.request.get 'service/get_suite_token', params: {suite_id: client.suite_id, suite_secret: client.suite_secret, suite_ticket: client.suite_ticket}
+        client.request.post 'service/get_suite_token', {suite_id: client.suite_id, suite_secret: client.suite_secret, suite_ticket: client.suite_ticket}
       end
 
     end

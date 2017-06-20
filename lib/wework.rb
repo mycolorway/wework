@@ -9,6 +9,7 @@ require 'wework/version'
 require 'wework/config'
 require 'wework/agent'
 require 'wework/contact'
+require 'wework/suite'
 require 'wework/provider'
 
 module Wework

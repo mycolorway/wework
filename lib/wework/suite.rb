@@ -1,8 +1,10 @@
 require 'wework/base'
+require 'wework/cipher'
 
 module Wework
   class Suite < Base
 
+    include Wework::Cipher
     include Wework::Api::Suite
 
     attr_reader :encoding_aes_key, :suite_id, :suite_secret, :suite_token
@@ -15,7 +17,7 @@ module Wework
     end
 
     def suite_ticket= ticket
-      redis.set ticket_key, ticket
+      Wework.redis.set ticket_key, ticket
     end
 
     def suite_ticket
@@ -23,7 +25,7 @@ module Wework
     end
 
     def access_token
-      token_store.access_token
+      token_store.token
     end
 
     private
