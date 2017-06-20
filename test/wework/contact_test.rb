@@ -5,7 +5,7 @@ class Wework::ContactTest < Minitest::Test
   attr_reader :contact
 
   def setup
-    @contact = Wework::Contact.new(corp_id: ENV['CORP_ID'], app_secret: ENV['CORP_SECRET'])
+    @contact = Wework::Contact.new(corp_id: ENV['CORP_ID'], app_secret: ENV['CONTACT_SECRET'])
   end
 
   def test_access_token

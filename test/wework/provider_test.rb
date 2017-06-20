@@ -6,10 +6,10 @@ class Wework::ProviderTest < Minitest::Test
 
   def setup
     @provider = Wework::Provider.new(
-      corp_id: ENV['PROVIDER_CORPID'],
-      encoding_aes_key: ENV['PROVIDER_ENCODING_AES_KEY'],
-      token: ENV['PROVIDER_TOKEN'],
-      provider_secret: ENV['PROVIDER_SECRET']
+      corp_id: ENV['SUITE_CORPID'],
+      encoding_aes_key: ENV['SUITE_ENCODING_AES_KEY'],
+      token: ENV['SUITE_TOKEN'],
+      provider_secret: ENV['SUITE_SECRET']
     )
   end
 
@@ -20,12 +20,13 @@ class Wework::ProviderTest < Minitest::Test
 
   def test_msg_encrypt
     content = provider.msg_encrypt "success"
-    puts "content: #{content}"
+    assert content, 'ojv9M3naVieUzqr0/bFi3PXIrVnTQ10NVjPvsoGmj65/Xqi1qiMH42bbILESGFeZ9U3jzDeYGV5yVKycQWUB4g=='
   end
 
   def test_generate_xml
-    xml = provider.generate_xml('success', Time.now.to_i, SecureRandom.hex)
-    puts "xml: #{xml}"
+    time = Time.now.to_i
+    xml = provider.generate_xml('success', time, SecureRandom.hex)
+    assert_equal Hash.from_xml(xml)['xml']['TimeStamp'], time.to_s
   end
 
 end

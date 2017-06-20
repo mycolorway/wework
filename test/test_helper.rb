@@ -8,7 +8,7 @@ require 'yaml'
 
 
 ENV['CORP_ID'] = 'corpid'
-ENV['CORP_SECRET'] = 'corp secret'
+ENV['CONTACT_SECRET'] = 'corp secret'
 ENV['APP_ID'] = 'appid'
 ENV['APP_SECRET'] = 'app secret'
 
