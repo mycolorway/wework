@@ -5,7 +5,7 @@ class Wework::ContactTest < Minitest::Test
   attr_reader :contact
 
   def setup
-    @contact = Wework::Contact.new(corp_id: ENV['CORP_ID'], app_secret: ENV['CONTACT_SECRET'])
+    @contact = Wework::Contact.new(corp_id: ENV['CORP_ID'], secret: ENV['CONTACT_SECRET'])
   end
 
   def test_access_token
@@ -22,6 +22,7 @@ class Wework::ContactTest < Minitest::Test
       english_name: 'seandong',
       position: '工程师',
     }
+    contact.user_delete(userid)
     assert contact.user_create(user).success?
     assert contact.user_update(userid, {name: '山居中人'}).success?
     assert contact.user_get(userid).success?

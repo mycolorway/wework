@@ -1,20 +1,15 @@
 require 'wework/request'
-require 'wework/token/store'
-require 'wework/token/redis_store'
-
-require 'wework/js_ticket/store'
-require 'wework/js_ticket/redis_store'
 
 module Wework
   class Base
 
     include Wework::Api::Media
 
-    attr_accessor :corp_id, :app_secret, :options
+    attr_accessor :corp_id, :secret, :options
 
     def initialize options={}
       @corp_id      = options.delete(:corp_id)
-      @app_secret   = options.delete(:app_secret)
+      @secret       = options.delete(:secret)
       @options      = options
     end
 
@@ -33,47 +28,40 @@ module Wework
     end
 
     def get(path, headers = {})
-      with_access_token(headers[:params]) do |params|
+      with_token(headers[:params]) do |params|
         request.get path, headers.merge(params: params)
       end
     end
 
     def post(path, payload, headers = {})
-      with_access_token(headers[:params]) do |params|
+      with_token(headers[:params]) do |params|
         request.post path, payload, headers.merge(params: params)
       end
     end
 
     def post_file(path, file, headers = {})
-      with_access_token(headers[:params]) do |params|
+      with_token(headers[:params]) do |params|
         request.post_file path, file, headers.merge(params: params)
       end
     end
 
     def access_token
-      token_store.access_token
-    end
-
-    def jsapi_ticket
-      jsticket_store.jsapi_ticket
+      raise NotImplementedError, "Subclasses must implement access_token method"
     end
 
     private
 
-    def with_access_token(params = {}, tries = 2)
+    def with_token(params = {}, tries = 2)
       params ||= {}
-      yield(params.merge(access_token: access_token))
+      yield(params.merge(token_params))
     rescue AccessTokenExpiredError
       token_store.refresh_token
       retry unless (tries -= 1).zero?
     end
 
-    def token_store
-      @token_store ||= Token::RedisStore.new self
+    def token_params
+      {access_token: access_token}
     end
 
-    def jsticket_store
-      @jsticket_store ||= JsTicket::RedisStore.new self
-    end
   end
 end

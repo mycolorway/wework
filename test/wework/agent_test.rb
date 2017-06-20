@@ -5,7 +5,7 @@ class Wework::AgentTest < Minitest::Test
   attr_reader :agent
 
   def setup
-    @agent = Wework::Agent.new(corp_id: ENV['CORP_ID'], agent_id: ENV['APP_ID'], app_secret: ENV['APP_SECRET'])
+    @agent = Wework::Agent.new(corp_id: ENV['CORP_ID'], agent_id: ENV['APP_ID'], secret: ENV['APP_SECRET'])
   end
 
   def test_authorize_url
