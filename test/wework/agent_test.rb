@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class Wework::Api::AgentTest < Minitest::Test
+class Wework::AgentTest < Minitest::Test
 
   attr_reader :agent
 
   def setup
-    @agent = Wework::Api::Agent.new(ENV['CORP_ID'], ENV['APP_ID'], ENV['APP_SECRET'])
+    @agent = Wework::Agent.new(corp_id: ENV['CORP_ID'], agent_id: ENV['APP_ID'], app_secret: ENV['APP_SECRET'])
     # @image_media_id = '1t7ArQ9p2kkebFgIhl5AV0R0GW0Um14sF8LhF1WQ_ZyDIx_5gunSGsI-OZWMc3-cC'
     # @file_media_id = '1gzwVHjceHuh-n6YljtcTmmENyxIBh16BVRRFH4yu9Ss'
     # @voice_media_id = '1_ESizV0Qiw1LQAxt-LWYJK23-5u5RDKYXQQ9M5fDBV5PNoWGMGsea5A9vOVWgmGi'

@@ -2,12 +2,11 @@ require "erb"
 
 module Wework
   module Api
-    class Agent < Base
-      # user agent: UA is mozilla/5.0 (iphone; cpu iphone os 10_2 like mac os x) applewebkit/602.3.12 (khtml, like gecko) mobile/14c92 wxwork/1.3.2 micromessenger/6.2
-
+    module Agent
       def authorize_url(redirect_uri, scope="snsapi_base", state="wxwork")
+        # user agent: UA is mozilla/5.0 (iphone; cpu iphone os 10_2 like mac os x) applewebkit/602.3.12 (khtml, like gecko) mobile/14c92 wxwork/1.3.2 micromessenger/6.2
         uri = ERB::Util.url_encode(redirect_uri)
-        "#{AUTHORIZE_ENDPOINT}?appid=#{corp_id}&redirect_uri=#{uri}&response_type=code&scope=#{scope}&agentid=#{app_id}&state=#{state}#wechat_redirect"
+        "#{AUTHORIZE_ENDPOINT}?appid=#{corp_id}&redirect_uri=#{uri}&response_type=code&scope=#{scope}&agentid=#{agent_id}&state=#{state}#wechat_redirect"
       end
 
       def get_oauth_userinfo code
@@ -28,11 +27,11 @@ module Wework
         }
       end
 
-      def get_info
+      def get_agent
         get 'agent/get', params: {agentid: agent_id}
       end
 
-      def set_info data={}
+      def set_agent data={}
         post 'agent/set', data.merge(agentid: agent_id)
       end
 
@@ -46,13 +45,6 @@ module Wework
 
       def menu_delete
         get 'menu/delete', params: {agentid: agent_id}
-      end
-
-      def message_send user_ids, department_ids, payload={}
-        payload[:agentid] = agent_id
-        payload[:touser] = Array.wrap(user_ids).join('|') if user_ids.present?
-        payload[:toparty] = Array.wrap(department_ids).join('|') if department_ids.present?
-        post 'message/send', payload
       end
 
       def text_message_send user_ids, department_ids, content
@@ -85,10 +77,13 @@ module Wework
 
       private
 
-      def agent_id
-        @app_id.to_i
-      end
+      def message_send user_ids, department_ids, payload={}
+        payload[:agentid] = agent_id
+        payload[:touser] = Array.wrap(user_ids).join('|') if user_ids.present?
+        payload[:toparty] = Array.wrap(department_ids).join('|') if department_ids.present?
 
+        post 'message/send', payload
+      end
     end
   end
 end

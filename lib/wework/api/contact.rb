@@ -1,10 +1,6 @@
 module Wework
   module Api
-    class Contact < Base
-
-      def initialize(corp_id, corp_secret)
-        super(corp_id, CONTACT_AGENT_ID, corp_secret)
-      end
+    module Contact
 
       def user_create data={}
         post 'user/create', data

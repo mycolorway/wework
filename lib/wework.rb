@@ -2,13 +2,15 @@ require 'redis'
 require 'active_support/all'
 #require 'active_support/core_ext/object/blank'
 
-Dir["#{File.dirname(__FILE__)}/wework/*.rb"].each do |path|
+Dir["#{File.dirname(__FILE__)}/wework/api/*.rb"].each do |path|
   require path
 end
 
-require 'wework/api/base'
-require 'wework/api/agent'
-require 'wework/api/contact'
+require 'wework/version'
+require 'wework/config'
+require 'wework/agent'
+require 'wework/contact'
+require 'wework/provider'
 
 module Wework
   API_ENDPOINT        = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze

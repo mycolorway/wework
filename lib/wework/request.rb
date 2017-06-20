@@ -1,5 +1,6 @@
 # Reference this: https://github.com/Eric-Guo/wechat/blob/master/lib/wechat/http_client.rb
 require 'http'
+require 'wework/global_code'
 
 module Wework
   class Request

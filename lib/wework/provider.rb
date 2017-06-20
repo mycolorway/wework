@@ -1,3 +1,6 @@
+
+require 'wework/cipher'
+
 module Wework
   class Provider
     include Wework::Cipher

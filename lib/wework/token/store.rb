@@ -28,7 +28,7 @@ module Wework
       private
 
       def key
-        @key ||= Digest::MD5.hexdigest("#{ACCESS_TOKEN_PREFIX}_#{app.app_id}_#{app.app_secret}")
+        @key ||= Digest::MD5.hexdigest("#{ACCESS_TOKEN_PREFIX}_#{app.corp_id}_#{app.app_secret}")
       end
 
     end
