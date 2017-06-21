@@ -8,8 +8,8 @@ class Wework::ContactTest < Minitest::Test
     @contact = Wework::Contact.new(corp_id: ENV['CORP_ID'], secret: ENV['CONTACT_SECRET'])
   end
 
-  def test_access_token
-    assert contact.access_token
+  def test_valid?
+    assert contact.valid?
   end
 
   def test_user

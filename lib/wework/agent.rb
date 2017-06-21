@@ -12,19 +12,11 @@ module Wework
       super(options)
     end
 
-    def access_token
-      token_store.token
-    end
-
     def jsapi_ticket
       jsticket_store.ticket
     end
 
     private
-
-    def token_store
-      @token_store ||= Token::CorpToken.new self
-    end
 
     def jsticket_store
       @jsticket_store ||= Token::JsTicket.new self

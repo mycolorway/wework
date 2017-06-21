@@ -8,6 +8,10 @@ class Wework::AgentTest < Minitest::Test
     @agent = Wework::Agent.new(corp_id: ENV['CORP_ID'], agent_id: ENV['APP_ID'], secret: ENV['APP_SECRET'])
   end
 
+  def test_valid?
+    assert agent.valid?
+  end
+
   def test_authorize_url
     assert agent.authorize_url('https://zhiren.com')
   end
@@ -21,10 +25,6 @@ class Wework::AgentTest < Minitest::Test
     assert_instance_of Hash, package
     assert_includes package.keys, 'signature'
     assert_equal ENV['CORP_ID'], package['appId']
-  end
-
-  def test_access_token
-    assert agent.access_token
   end
 
   def test_get_info

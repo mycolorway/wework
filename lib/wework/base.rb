@@ -10,6 +10,7 @@ module Wework
     def initialize options={}
       @corp_id      = options.delete(:corp_id)
       @secret       = options.delete(:secret)
+      @token_store  = options.delete(:token_store)
       @options      = options
     end
 
@@ -19,7 +20,7 @@ module Wework
 
     def valid?
       return false if corp_id.nil?
-      access_token.present?
+      token_store.token.present?
     rescue AccessTokenExpiredError
       false
     rescue => e
@@ -46,7 +47,7 @@ module Wework
     end
 
     def access_token
-      raise NotImplementedError, "Subclasses must implement access_token method"
+      token_store.token
     end
 
     private
@@ -57,6 +58,10 @@ module Wework
     rescue AccessTokenExpiredError
       token_store.refresh_token
       retry unless (tries -= 1).zero?
+    end
+
+    def token_store
+      @token_store ||= Token::AppToken.new self
     end
 
     def token_params

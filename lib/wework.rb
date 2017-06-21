@@ -10,12 +10,14 @@ require 'wework/config'
 require 'wework/agent'
 require 'wework/contact'
 require 'wework/suite'
+require 'wework/corp'
 
 module Wework
-  API_ENDPOINT        = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze
-  AUTHORIZE_ENDPOINT  = 'https://open.weixin.qq.com/connect/oauth2/authorize'.freeze
-  HTTP_OK_STATUS      = [200, 201].freeze
-  SUCCESS_CODE        = 0
+  API_ENDPOINT            = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze
+  AUTHORIZE_ENDPOINT      = 'https://open.weixin.qq.com/connect/oauth2/authorize'.freeze
+  CORP_AUTHORIZE_ENDPOINT = 'https://qy.weixin.qq.com/cgi-bin/loginpage'.freeze
+  HTTP_OK_STATUS          = [200, 201].freeze
+  SUCCESS_CODE            = 0
 
   # Exceptions
   class RedisNotConfigException < RuntimeError; end
