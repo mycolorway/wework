@@ -25,6 +25,23 @@ module Wework
       def get_corp_token auth_corpid, permanent_code
         post 'service/get_corp_token', {suite_id: suite_id, auth_corpid: auth_corpid, permanent_code: permanent_code}
       end
+
+      def get_checkin_data start_time, end_time, userid_list=[], checkin_type=3
+        # https://work.weixin.qq.com/api/doc#11196
+        post 'checkin/getcheckindata', {
+           opencheckindatatype: checkin_type,
+           starttime: start_time,
+           endtime: end_time,
+           useridlist: userid_list,
+        }
+      end
+
+      def get_approval_data start_time, end_time, next_spnum=nil
+        payload = {starttime: start_time, endtime: end_time}
+        payload[:next_spnum] = next_spnum unless next_spnum.nil?
+        post 'corp/getapprovaldata', payload
+      end
+
     end
   end
 end
