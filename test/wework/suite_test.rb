@@ -24,6 +24,6 @@ class Wework::SuiteTest < Minitest::Test
     pre_auth_code = suite.get_pre_auth_code
     assert pre_auth_code
 
-    assert suite.set_session_info(pre_auth_code).result?
+    assert suite.set_session_info(pre_auth_code).success?
   end
 end

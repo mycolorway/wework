@@ -14,8 +14,8 @@ class Wework::ProviderTest < Minitest::Test
   end
 
   def test_msg_decrypt
-    content = provider.msg_decrypt "9D2OoPwCf0iYCdsEpoHtwRS8hdnJtm98M5IHaUlqCkdokYMsYPBb5H3oPeOpmk7Xe4sifX/vrIcMbS9KIUOV7A=="
-    assert_equal content, '7104461721214118143'
+    content = provider.msg_decrypt "6kL48HdTY9e31TJCUUxmQ3f1W2Kwp0nvi/RnXfkg94/UaVjsl/ayibdzkKaorC81Gv/hNDk43qmLdeXR6q45Tw=="
+    assert_equal content, '1932107781389410111'
   end
 
   def test_msg_encrypt
