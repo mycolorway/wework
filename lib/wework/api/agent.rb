@@ -75,6 +75,23 @@ module Wework
         message_send user_ids, department_ids, {news: {articles: news}, msgtype: 'news'}
       end
 
+      def get_checkin_data start_time, end_time, userid_list=[], checkin_type=3
+        # https://work.weixin.qq.com/api/doc#11196
+        post 'checkin/getcheckindata', {
+           opencheckindatatype: checkin_type,
+           starttime: start_time,
+           endtime: end_time,
+           useridlist: userid_list,
+        }
+      end
+
+      def get_approval_data start_time, end_time, next_spnum=nil
+        # https://work.weixin.qq.com/api/doc#11228
+        payload = {starttime: start_time, endtime: end_time}
+        payload[:next_spnum] = next_spnum unless next_spnum.nil?
+        post 'corp/getapprovaldata', payload
+      end
+
       private
 
       def message_send user_ids, department_ids, payload={}
