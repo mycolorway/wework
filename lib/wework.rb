@@ -10,7 +10,6 @@ require 'wework/config'
 require 'wework/agent'
 require 'wework/contact'
 require 'wework/suite'
-require 'wework/provider'
 
 module Wework
   API_ENDPOINT        = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze
