@@ -24,7 +24,7 @@ module Wework
     rescue AccessTokenExpiredError
       false
     rescue => e
-      Rails.logger.error "[WEWORK] (valid?) fetch access token error(#{corp_id}##{app_id}): #{e.inspect}" if defined?(Rails)
+      Rails.logger.error "[WEWORK] (valid?) fetch access token error(#{corp_id}): #{e.inspect}" if defined?(Rails)
       false
     end
 
