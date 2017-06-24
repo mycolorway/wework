@@ -1,6 +1,9 @@
 require 'openssl/cipher'
 require 'base64'
 
+# the file copy from here
+# https://github.com/Eric-Guo/wechat/blob/master/lib/wechat/cipher.rb
+
 module Wework
   module Cipher
     extend ActiveSupport::Concern
