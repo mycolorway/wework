@@ -13,7 +13,6 @@ module Wework
       end
 
       def refresh_token
-        puts "lient.corp_id: #{client.corp_id}"
         client.suite.get_corp_token(client.corp_id, client.permanent_code)
       end
     end
