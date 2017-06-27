@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class Wework::CorpTest < Minitest::Test
+class Wework::Api::CorpTest < Minitest::Test
 
   attr_reader :corp
 
   def setup
-    suite = Wework::Suite.new(
+    suite = Wework::Api::Suite.new(
       corp_id: ENV['SUITE_CORPID'],
       suite_id: ENV['SUITE_ID'],
       encoding_aes_key: ENV['SUITE_ENCODING_AES_KEY'],

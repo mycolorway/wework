@@ -3,14 +3,17 @@ require 'active_support/all'
 #require 'active_support/core_ext/object/blank'
 
 lib = "#{File.dirname(__FILE__)}/wework"
-Dir["#{lib}/api/*.rb",  "#{lib}/token/*.rb"].each { |path| require path }
+Dir["#{lib}/api/methods/*.rb",  "#{lib}/token/*.rb"].each { |path| require path }
 
 require 'wework/version'
+require 'wework/cipher'
 require 'wework/config'
-require 'wework/agent'
-require 'wework/contact'
-require 'wework/suite'
-require 'wework/corp'
+require 'wework/api/base'
+require 'wework/api/agent'
+require 'wework/api/contact'
+require 'wework/api/suite'
+require 'wework/api/corp'
+
 
 module Wework
   API_ENDPOINT            = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze

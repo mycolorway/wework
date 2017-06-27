@@ -1,11 +1,11 @@
 require 'test_helper'
 
-class Wework::ContactTest < Minitest::Test
+class Wework::Api::ContactTest < Minitest::Test
 
   attr_reader :contact
 
   def setup
-    @contact = Wework::Contact.new(corp_id: ENV['CORP_ID'], secret: ENV['CONTACT_SECRET'])
+    @contact = Wework::Api::Contact.new(corp_id: ENV['CORP_ID'], secret: ENV['CONTACT_SECRET'])
   end
 
   def test_valid?

@@ -1,30 +1,75 @@
 module Wework
   module Api
-    module Suite
-      def corp_authorize_url(redirect_uri, scope="snsapi_base", state="corp_authorize")
-        "#{CORP_AUTHORIZE_ENDPOINT}?suite_id=#{suite_id}&pre_auth_code=#{get_pre_auth_code}&redirect_uri=#{redirect_uri}&state=#{state}"
+    class Suite < Base
+
+      include Wework::Cipher
+      include Methods::Suite
+
+      attr_reader :encoding_aes_key, :suite_id, :suite_secret, :suite_token
+
+      def initialize(options={})
+        @suite_id = options.delete(:suite_id)
+        @suite_secret = options.delete(:suite_secret)
+        @suite_token = options.delete(:suite_token)
+        @encoding_aes_key = options.delete(:encoding_aes_key)
+        @cache_corps = {}
+        super(options)
       end
 
-      def get_pre_auth_code
-        result = post 'service/get_pre_auth_code', {suite_id: suite_id}
-        return result.pre_auth_code if result.success?
+      def msg_decrypt message
+        unpack(decrypt(Base64.decode64(message), encoding_aes_key))[0]
       end
 
-      def set_session_info pre_auth_code, session_info={}
-        post 'service/set_session_info', {pre_auth_code: pre_auth_code, session_info: session_info}
+      def msg_encrypt message
+        Base64.strict_encode64(encrypt(pack(message, corp_id), encoding_aes_key))
       end
 
-      def get_permanent_code auth_code
-        post 'service/get_permanent_code', {suite_id: suite_id, auth_code: auth_code}
+      def signature(timestamp, nonce, encrypt)
+        array = [suite_token, timestamp, nonce]
+        array << encrypt unless encrypt.nil?
+        Digest::SHA1.hexdigest array.compact.collect(&:to_s).sort.join
       end
 
-      def get_auth_info auth_corpid, permanent_code
-        post 'service/get_auth_info', {suite_id: suite_id, auth_corpid: auth_corpid, permanent_code: permanent_code}
+      def generate_xml(msg, timestamp, nonce)
+        encrypt = msg_encrypt(msg)
+        {
+          Encrypt: encrypt,
+          MsgSignature: signature(timestamp, nonce, encrypt),
+          TimeStamp: timestamp,
+          Nonce: nonce
+        }.to_xml(root: 'xml', children: 'item', skip_instruct: true, skip_types: true)
       end
 
-      def get_corp_token auth_corpid, permanent_code
-        post 'service/get_corp_token', {suite_id: suite_id, auth_corpid: auth_corpid, permanent_code: permanent_code}
+      def suite_ticket= ticket
+        Wework.redis.set ticket_key, ticket
       end
+
+      def suite_ticket
+        Wework.redis.get ticket_key
+      end
+
+      def corp(corp_id, permanent_code)
+        if @cache_corps.key?(corp_id)
+          @cache_corps[corp_id]
+        else
+          @cache_corps[corp_id] = Wework::Api::Corp.new(suite: self, corp_id: corp_id, permanent_code: permanent_code)
+        end
+      end
+
+      private
+
+      def token_params
+        {suite_access_token: access_token}
+      end
+
+      def ticket_key
+        "SUITE_TICKET_#{suite_id}"
+      end
+
+      def token_store
+        @token_store ||= Token::SuiteToken.new self
+      end
+
     end
   end
 end
