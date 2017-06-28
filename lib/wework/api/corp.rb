@@ -13,10 +13,8 @@ module Wework
         super(options)
       end
 
-
-
       def agent(agent_id)
-        Wework::Agent.new(corp_id: corp_id, agent_id: agent_id, token_store: token_store)
+        Wework::Api::Agent.new(corp_id: corp_id, agent_id: agent_id, token_store: token_store)
       end
 
       private
