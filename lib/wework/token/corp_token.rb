@@ -5,7 +5,7 @@ module Wework
     class CorpToken < Base
 
       def redis_key
-        @redis_key ||= Digest::MD5.hexdigest "WX_CORP_TOKEN_#{client.corp_id}"
+        @redis_key ||= Digest::MD5.hexdigest "WX_CORP_TOKEN_#{client.corp_id}_#{client.permanent_code}"
       end
 
       def token_key

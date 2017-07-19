@@ -57,7 +57,7 @@ module Wework
         params ||= {}
         yield(params.merge(token_params))
       rescue AccessTokenExpiredError
-        token_store.refresh_token
+        token_store.update_token
         retry unless (tries -= 1).zero?
       end
 

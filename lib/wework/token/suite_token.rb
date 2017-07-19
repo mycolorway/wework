@@ -5,7 +5,7 @@ module Wework
     class SuiteToken < Base
 
       def redis_key
-        @redis_key ||= Digest::MD5.hexdigest "WX_SUITE_TOKEN_#{client.suite_id}"
+        @redis_key ||= Digest::MD5.hexdigest "WX_SUITE_TOKEN_#{client.suite_id}_#{client.suite_secret}_#{client.suite_token}"
       end
 
       def token_key
