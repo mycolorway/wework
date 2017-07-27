@@ -13,6 +13,26 @@ module Wework
         redis.hget(redis_key, token_key)
       end
 
+      def update_token
+        result = refresh_token
+        value = result.send(token_key)
+        if value.nil?
+          puts "#{self.class.name} refresh token error: #{result.inspect}"
+        else
+          expires_at = Time.now.to_i + result.expires_in.to_i - Wework.expired_shift_seconds
+
+          redis.hmset(
+            redis_key,
+            token_key, value,
+            "expires_at", expires_at
+          )
+
+          redis.expireat(redis_key, expires_at)
+        end
+
+        value
+      end
+
       private
 
       def redis
@@ -33,26 +53,6 @@ module Wework
 
       def expired?
         redis.hvals(redis_key).empty? || redis.hget(redis_key, 'expires_at').to_i <= Time.now.to_i
-      end
-
-      def update_token
-        result = refresh_token
-        value = result.send(token_key)
-        if value.nil?
-          puts "#{self.class.name} refresh token error: #{result.inspect}"
-        else
-          expires_at = Time.now.to_i + result.expires_in.to_i - Wework.expired_shift_seconds
-
-          redis.hmset(
-            redis_key,
-            token_key, value,
-            "expires_at", expires_at
-          )
-
-          redis.expireat(redis_key, expires_at)
-        end
-
-        value
       end
     end
   end
