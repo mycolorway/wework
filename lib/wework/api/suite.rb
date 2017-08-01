@@ -1,3 +1,5 @@
+require 'builder'
+
 module Wework
   module Api
     class Suite < Base
