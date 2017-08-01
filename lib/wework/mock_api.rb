@@ -1,8 +1,7 @@
 require 'json'
 require 'sinatra/base'
 
-class MockApi < Sinatra::Base
-
+class Wework::MockApi < Sinatra::Base
   get '/cgi-bin/media/get' do
     send_file mock_file_path('files/zhiren.png'), :type => :jpg
   end
@@ -28,6 +27,6 @@ class MockApi < Sinatra::Base
   end
 
   def mock_file_path path
-    File.join(File.expand_path('../../mock_responses/', __FILE__), path)
+    File.join(File.expand_path('../../../mock_responses/', __FILE__), path)
   end
 end

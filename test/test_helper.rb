@@ -15,12 +15,12 @@ end
 
 if ENV['MOCK_WEWORK_API'] == '1'
   require 'webmock/minitest'
-  Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each {|f| require f}
+  require 'wework/mock_api'
 end
 
 class Minitest::Test
   def before_setup
-    stub_request(:any, /qyapi.weixin.qq.com/).to_rack(MockApi) if ENV['MOCK_WEWORK_API'] == '1'
+    stub_request(:any, /qyapi.weixin.qq.com/).to_rack(Wework::MockApi) if ENV['MOCK_WEWORK_API'] == '1'
     Wework.configure do |config|
       config.redis = MockRedis.new
     end
