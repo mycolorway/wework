@@ -17,9 +17,7 @@ class Wework::Api::SuiteTest < Minitest::Test
   end
 
   def test_corp_authorize_url
-    url = suite.corp_authorize_url('https://zhiren.com')
-    puts url
-    assert url
+    assert_match 'zhiren', suite.corp_authorize_url('https://zhiren.com')
   end
 
   def test_valid?
@@ -27,13 +25,7 @@ class Wework::Api::SuiteTest < Minitest::Test
   end
 
   def test_msg_decrypt
-    content = suite.msg_decrypt "6kL48HdTY9e31TJCUUxmQ3f1W2Kwp0nvi/RnXfkg94/UaVjsl/ayibdzkKaorC81Gv/hNDk43qmLdeXR6q45Tw=="
-    assert_equal content, '1932107781389410111'
-  end
-
-  def test_msg_encrypt
-    content = suite.msg_encrypt "success"
-    assert content, 'ojv9M3naVieUzqr0/bFi3PXIrVnTQ10NVjPvsoGmj65/Xqi1qiMH42bbILESGFeZ9U3jzDeYGV5yVKycQWUB4g=='
+    assert_equal 'success', suite.msg_decrypt("KyDloUfxuEE5i5CdHE4zDt1lnQ2qjNHhNShF+vB/bCOfX2EfBzwqRz50j1qurifmECXpnSoV3SCQtPdLqp6GvA==")
   end
 
   def test_generate_xml
@@ -43,16 +35,19 @@ class Wework::Api::SuiteTest < Minitest::Test
   end
 
   def test_auth_code
-    pre_auth_code = suite.get_pre_auth_code
-    assert pre_auth_code
+    assert suite.get_pre_auth_code
+  end
 
-    assert suite.set_session_info(pre_auth_code).success?
+  def test_set_session_info
+    assert suite.set_session_info(suite.get_pre_auth_code).success?
   end
 
   def test_get_permanent_code
-    # result = suite.get_permanent_code 'hzhts7o90DFxbHK7XLRool0Iuw_Hf45Imt5-S9EpOAW7Mk9g6koCehzipFJ9YNSnsavE3iNtu23u8NDW5mMtWS6xYklHL4ViomP7ZItxxD0'
-    # puts result.inspect
+    assert suite.get_permanent_code('permanent_code').auth_corp_info
   end
 
+  def test_get_corp_token
+    assert suite.get_corp_token('corp_id', 'permanent_code').access_token
+  end
 
 end

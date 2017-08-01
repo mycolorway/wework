@@ -1,19 +1,11 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
 require 'wework'
+require 'mock_redis'
 require "minitest/pride"
 require 'minitest/autorun'
 require 'minitest/unit'
-
 require 'yaml'
 
-
-ENV['CORP_ID'] = 'corpid'
-ENV['CONTACT_SECRET'] = 'corp secret'
-ENV['APP_ID'] = 'appid'
-ENV['APP_SECRET'] = 'app secret'
-
-
-#load seeds file
 seeds_path = File.join(File.dirname(__FILE__), 'fixtures/config.yml')
 if File.exist? seeds_path
   YAML.load_file(seeds_path).each do |k, v|
@@ -21,8 +13,17 @@ if File.exist? seeds_path
   end
 end
 
+unless ENV['IGNORE_WEWORK_MOCK']
+  require 'webmock/minitest'
+  Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each {|f| require f}
+end
+
 class Minitest::Test
-  Wework.configure do |config|
-    config.redis = Redis.new(host: '127.0.0.1', port: 6379, db: 1)
+  def before_setup
+    stub_request(:any, /qyapi.weixin.qq.com/).to_rack(FakeWework) unless ENV['IGNORE_WEWORK_MOCK']
+
+    Wework.configure do |config|
+      config.redis = MockRedis.new
+    end
   end
 end

@@ -32,12 +32,12 @@ class Wework::Api::ContactTest < Minitest::Test
   end
 
   def test_department
-    department_id = rand(100000 .. 999999)
-    department = {name: "API测试部门#{department_id}", id: department_id, parentid: 1}
-    assert contact.department_create(department).success?
-    assert contact.department_update(department_id, {name: "API测试部门#{rand(100000 .. 999999)}"}).success?
-    assert contact.department_list(department_id).success?
-    assert contact.department_delete(department_id).success?
+    department = {name: "API测试部门", parentid: 1}
+    result = contact.department_create(department)
+    assert result.success?
+    assert contact.department_update(result['id'], {name: "API测试部门1212"}).success?
+    assert contact.department_list(result['id']).success?
+    assert contact.department_delete(result['id']).success?
   end
 
   # def test_batch_replaceparty

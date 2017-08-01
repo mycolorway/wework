@@ -1,0 +1,29 @@
+{
+  "errcode":0,
+  "errmsg": "ok",
+  "agentid": "1",
+  "name": "NAME",
+  "square_logo_url": "xxxxxxxx",
+  "description": "desc",
+  "allow_userinfos": {
+    "user":[
+      {
+                 "userid":"id2"
+             },
+             {
+                 "userid":"id3"
+             }
+      ]
+    },
+   "allow_partys":{
+       "partyid": [1]
+    },
+    "allow_tags":{
+       "tagid": [1,2,3]
+    },
+   "close": 0,
+   "redirect_domain": "www.qq.com",
+   "report_location_flag": 0,
+   "isreportenter": 0,
+   "home_url": "http://www.qq.com"
+}

@@ -1,0 +1,16 @@
+{
+    "errcode":0,
+    "errmsg":"ok" ,
+    "agentlist":[
+        {
+            "agentid":1,
+            "name":"NAME",
+            "square_logo_url":"xxxxxxxx"
+        },
+        {
+            "agentid":2,
+            "name":"NAME",
+            "square_logo_url":"xxxxxxxx"
+        }
+    ]
+}

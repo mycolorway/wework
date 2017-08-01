@@ -8,5 +8,4 @@
 /spec/reports/
 /tmp/
 *.gem
-config.yml
 .DS_Store
