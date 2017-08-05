@@ -10,6 +10,10 @@ module Wework
         def media_get(media_id)
           get 'media/get', params: { media_id: media_id }, as: :file
         end
+
+        def get_media_url(media_id)
+          "#{API_ENDPOINT}media/get?access_token=#{access_token}&media_id=#{media_id}"
+        end
       end
     end
   end
