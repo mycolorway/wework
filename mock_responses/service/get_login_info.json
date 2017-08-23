@@ -1,0 +1,34 @@
+{
+  "usertype": 1,
+  "user_info": {
+    "userid": "xxxx",
+    "name": "xxxx",
+    "avatar": "xxxx",
+    "email": "xxxx"
+  },
+  "corp_info": {
+    "corpid": "wx6c698d13f7a409a4"
+  },
+  "agent": [
+    {
+      "agentid": 0,
+      "auth_type": 1
+    },
+    {
+      "agentid": 1,
+      "auth_type": 1
+    },
+    {
+      "agentid": 2,
+      "auth_type": 1
+    }
+  ],
+  "auth_info": {
+    "department": [
+      {
+        "id": "2",
+        "writable": "true"
+      }
+    ]
+  }
+}

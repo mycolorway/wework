@@ -6,7 +6,7 @@ class Wework::Api::SuiteTest < Minitest::Test
 
   def setup
     @suite = Wework::Api::Suite.new(
-      corp_id: ENV['SUITE_CORPID'],
+      corp_id: ENV['PROVIDER_CORPID'],
       suite_id: ENV['SUITE_ID'],
       encoding_aes_key: ENV['SUITE_ENCODING_AES_KEY'],
       suite_token: ENV['SUITE_TOKEN'],

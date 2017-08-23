@@ -13,6 +13,7 @@ require 'wework/api/agent'
 require 'wework/api/contact'
 require 'wework/api/suite'
 require 'wework/api/corp'
+require 'wework/api/provider'
 
 
 module Wework
