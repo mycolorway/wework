@@ -84,7 +84,6 @@ module Wework
 
   class Result < OpenStruct
     def initialize(data)
-      self.values = data.reject { |k, _| %w(errcode errmsg) }
       data['message'] = GLOBAL_CODES[data['errcode'].to_i]
       data['full_message'] = "#{data['errcode']}：#{data['errmsg']}（#{data['message']}）"
       super data
