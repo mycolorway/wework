@@ -43,8 +43,12 @@ module Wework
           get 'department/delete', params: {id: department_id}
         end
 
-        def department_list department_id=0
-          get 'department/list', params: {id: department_id}
+        def department_list department_id=nil
+          if department_id.nil?
+            get 'department/list'
+          else
+            get 'department/list', params: {id: department_id}
+          end
         end
 
         def batch_syncuser media_id, callback_url=nil, token=nil, encodingaeskey=nil
