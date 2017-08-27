@@ -14,6 +14,10 @@ module Wework
           get 'user/getuserinfo', params: {code: code}
         end
 
+        def get_user_detail user_ticket
+          post 'user/getuserdetail', {user_ticket: user_ticket}
+        end
+
         def get_jssign_package url
           timestamp = Time.now.to_i
           noncestr = SecureRandom.hex(8)
