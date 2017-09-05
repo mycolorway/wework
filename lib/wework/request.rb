@@ -72,7 +72,8 @@ module Wework
         data = file
 
       when :json
-        data = JSON.parse response.body.to_s.gsub(/[\u0000-\u001f]+/, '')
+        res = response.body.to_s.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
+        data = JSON.parse res.gsub(/[\u0000-\u001f]+/, '')
       else
         data = response.body
       end
