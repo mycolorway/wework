@@ -2,6 +2,8 @@ require 'redis'
 require 'active_support/all'
 #require 'active_support/core_ext/object/blank'
 
+require 'wework/cipher'
+
 Dir["#{File.dirname(__FILE__)}/wework/*.rb"].each do |path|
   require path
 end
