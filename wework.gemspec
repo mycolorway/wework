@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'http', '~> 2.2'
+  spec.add_dependency 'http', '>= 2.2'
   spec.add_dependency 'activesupport', '~> 5.0'
   spec.add_dependency 'redis', '~>3.3'
   spec.add_dependency 'builder', '~> 3.2.2'
