@@ -14,6 +14,10 @@ module Wework
         get 'user/getuserinfo', params: {code: code}
       end
 
+      def get_session_with_jscode(js_code, grant_type='authorization_code')
+        get 'miniprogram/jscode2session', params: {js_code: js_code, grant_type: grant_type}
+      end
+
       def get_jssign_package url
         timestamp = Time.now.to_i
         noncestr = SecureRandom.hex(8)
