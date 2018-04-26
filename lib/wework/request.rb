@@ -97,7 +97,7 @@ module Wework
     end
 
     def throw_error
-      raise ResultErrorException.new(message || errmsg) unless success?
+      raise ResultErrorException.new(full_message) unless success?
     end
 
     def success?
