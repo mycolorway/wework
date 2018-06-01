@@ -5,6 +5,8 @@ module Wework
     class Base
 
       include Methods::Media
+      include Methods::User
+      include Methods::Department
 
       attr_accessor :corp_id, :secret, :options
 

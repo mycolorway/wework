@@ -3,6 +3,10 @@ module Wework
     class Agent < Base
 
       include Methods::Agent
+      include Methods::Message
+      include Methods::Menu
+      include Methods::Checkin
+      include Methods::Approval
 
       attr_reader :agent_id
 

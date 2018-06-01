@@ -44,46 +44,6 @@ module Wework
           post 'agent/set', data.merge(agentid: agent_id)
         end
 
-        def menu_create menu
-          post 'menu/create', menu, params: {agentid: agent_id}
-        end
-
-        def menu_get
-          get 'menu/get', params: {agentid: agent_id}
-        end
-
-        def menu_delete
-          get 'menu/delete', params: {agentid: agent_id}
-        end
-
-        def text_message_send user_ids, department_ids, content
-          message_send user_ids, department_ids, {text: {content: content}, msgtype: 'text'}
-        end
-
-        def image_message_send user_ids, department_ids, media_id
-          message_send user_ids, department_ids, {image: {media_id: media_id}, msgtype: 'image'}
-        end
-
-        def voice_message_send user_ids, department_ids, media_id
-          message_send user_ids, department_ids, {voice: {media_id: media_id}, msgtype: 'voice'}
-        end
-
-        def file_message_send user_ids, department_ids, media_id
-          message_send user_ids, department_ids, {file: {media_id: media_id}, msgtype: 'file'}
-        end
-
-        def video_message_send user_ids, department_ids, video={}
-          message_send user_ids, department_ids, {video: video, msgtype: 'video'}
-        end
-
-        def textcard_message_send user_ids, department_ids, textcard={}
-          message_send user_ids, department_ids, {textcard: textcard, msgtype: 'textcard'}
-        end
-
-        def news_message_send user_ids, department_ids, news=[]
-          message_send user_ids, department_ids, {news: {articles: news}, msgtype: 'news'}
-        end
-
         def get_checkin_data start_time, end_time, userid_list=[], checkin_type=3
           # https://work.weixin.qq.com/api/doc#11196
           post 'checkin/getcheckindata', {
@@ -99,16 +59,6 @@ module Wework
           payload = {starttime: start_time, endtime: end_time}
           payload[:next_spnum] = next_spnum unless next_spnum.nil?
           post 'corp/getapprovaldata', payload
-        end
-
-        private
-
-        def message_send user_ids, department_ids, payload={}
-          payload[:agentid] = agent_id
-          payload[:touser] = Array.wrap(user_ids).join('|') if user_ids.present?
-          payload[:toparty] = Array.wrap(department_ids).join('|') if department_ids.present?
-
-          post 'message/send', payload
         end
       end
     end

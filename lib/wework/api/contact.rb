@@ -1,7 +1,7 @@
 module Wework
   module Api
     class Contact < Base
-      include Methods::Contact
+      include Methods::Batch
     end
   end
 end
