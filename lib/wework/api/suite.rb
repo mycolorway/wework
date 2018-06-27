@@ -14,7 +14,6 @@ module Wework
         @suite_secret = options.delete(:suite_secret)
         @suite_token = options.delete(:suite_token)
         @encoding_aes_key = options.delete(:encoding_aes_key)
-        @cache_corps = {}
         super(options)
       end
 
@@ -51,11 +50,7 @@ module Wework
       end
 
       def corp(corp_id, permanent_code)
-        if @cache_corps.key?(corp_id)
-          @cache_corps[corp_id]
-        else
-          @cache_corps[corp_id] = Wework::Api::Corp.new(suite: self, corp_id: corp_id, permanent_code: permanent_code)
-        end
+        Wework::Api::Corp.new(suite: self, corp_id: corp_id, permanent_code: permanent_code)
       end
 
       private
