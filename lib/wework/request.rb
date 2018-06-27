@@ -52,6 +52,7 @@ module Wework
       parse_response(response, as || :json) do |parse_as, data|
         break data unless parse_as == :json
         result = Wework::Result.new(data)
+        Rails.logger.info "[WEWORK] request path(#{url_base}#{path}): #{result.inspect}" if defined?(Rails)
         raise AccessTokenExpiredError if result.token_expired?
         result
       end
