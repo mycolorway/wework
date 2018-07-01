@@ -33,7 +33,7 @@ module Wework
         end
 
         def get_session_with_jscode(js_code, grant_type='authorization_code')
-          post 'miniprogram/jscode2session', {js_code: js_code, grant_type: grant_type}
+          post 'miniprogram/jscode2session', {}, params: {js_code: js_code, grant_type: grant_type}
         end
 
         def get_agent
