@@ -33,7 +33,7 @@ module Wework
         end
 
         def get_session_with_jscode(js_code, grant_type='authorization_code')
-          get 'miniprogram/jscode2session', params: {js_code: js_code, grant_type: grant_type}
+          post 'miniprogram/jscode2session', {js_code: js_code, grant_type: grant_type}
         end
 
         def get_agent
@@ -42,23 +42,6 @@ module Wework
 
         def set_agent data={}
           post 'agent/set', data.merge(agentid: agent_id)
-        end
-
-        def get_checkin_data start_time, end_time, userid_list=[], checkin_type=3
-          # https://work.weixin.qq.com/api/doc#11196
-          post 'checkin/getcheckindata', {
-             opencheckindatatype: checkin_type,
-             starttime: start_time,
-             endtime: end_time,
-             useridlist: userid_list,
-          }
-        end
-
-        def get_approval_data start_time, end_time, next_spnum=nil
-          # https://work.weixin.qq.com/api/doc#11228
-          payload = {starttime: start_time, endtime: end_time}
-          payload[:next_spnum] = next_spnum unless next_spnum.nil?
-          post 'corp/getapprovaldata', payload
         end
       end
     end
