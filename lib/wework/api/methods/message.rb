@@ -4,6 +4,11 @@ module Wework
   module Api
     module Methods
       module Message
+        def miniprogram_message_send user_id, miniprogram_notice={}
+          notice = miniprogram_notice.merge(appid: agent_id)
+          post 'message/send', { touser: user_id, msgtype: 'miniprogram_notice', miniprogram_notice: notice }
+        end
+
         def text_message_send user_ids, department_ids, content
           message_send user_ids, department_ids, {text: {content: content}, msgtype: 'text'}
         end
