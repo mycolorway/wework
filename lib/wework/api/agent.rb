@@ -11,7 +11,8 @@ module Wework
       attr_reader :agent_id
 
       def initialize(options={})
-        @agent_id = options.delete(:agent_id).to_i
+        @agent_id = options.delete(:agent_id)
+        @agent_id = @agent_id.to_i if @agent_id && @agent_id.match?(/\A\d+\Z/)
         super(options)
       end
 
