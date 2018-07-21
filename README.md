@@ -4,6 +4,11 @@ Wework is a ruby API wrapper for work wechat.
 
 [![CircleCI](https://circleci.com/gh/mycolorway/wework/tree/suite.svg?style=svg)](https://circleci.com/gh/mycolorway/wework/tree/suite)
 
+## Version 1.1.0
+* 支持第三方应用接口
+* 支持小程序接口
+
+
 ## Version 0.1.4
 * 异步任务接口 [doc](https://work.weixin.qq.com/api/doc#10138)
 
