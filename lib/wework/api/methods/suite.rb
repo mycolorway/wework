@@ -43,6 +43,10 @@ module Wework
         def get_user_detail(user_ticket)
           post "service/getuserdetail3rd?access_token=#{access_token}", {user_ticket: user_ticket}
         end
+
+        def get_session_with_jscode(js_code, grant_type='authorization_code')
+          post 'service/miniprogram/jscode2session', {}, params: {js_code: js_code, grant_type: grant_type}
+        end
       end
     end
   end
