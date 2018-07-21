@@ -12,7 +12,7 @@ module Wework
 
       def initialize(options={})
         @agent_id = options.delete(:agent_id)
-        @agent_id = @agent_id.to_i if @agent_id && @agent_id.match?(/\A\d+\Z/)
+        @agent_id = @agent_id.to_i if @agent_id.to_s =~ /\A\d+\Z/
         super(options)
       end
 
