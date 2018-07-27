@@ -1,4 +1,4 @@
-# Wechat Work 「企业微信 API」
+# Wechat Work 「企业微信」
 
 Wework is a ruby API wrapper for wechat work「企业微信」.
 
@@ -37,13 +37,13 @@ $wework_suite = Wework::Api::Suite.new(
 ```
 [套件接口列表](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/suite.rb)
 
-2). 获取授权企业应用API [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/agent.rb)
+2). 获取第三方应用接口 [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/agent.rb)
 
 ```ruby
 agent_api = $wework_suite.corp(
-  corp_id,                                                  # 授权企业 CorpID
-  permanent_code                                            # 永久授权码
-)
+              corp_id,                                      # 授权企业 CorpID
+              permanent_code                                # 永久授权码
+            ).agent(agent_id)
 ```
 
 3). 第三方应用回调协议
