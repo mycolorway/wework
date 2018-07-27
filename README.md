@@ -24,6 +24,16 @@ Or install it yourself as:
 
 ## Usage
 
+#### 初始化
+
+```
+Wework.configure do |config|
+  config.redis = Redis.new(host: ENV['REDIS_HOST'], port: ENV['REDIS_PORT'], db: ENV['REDIS_CACHE_DB'])   # redis
+  config.http_timeout_options = {write: 15, read: 15, connect: 10}                                        # 请求超时
+  config.expired_shift_seconds = 180                                                                      # access token 有效期偏移量 (时间有效期 - 偏移量)
+end
+```
+
 #### 第三方应用
 
 1). 初始化套件接口 [Wework::Api::Suite](https://github.com/mycolorway/wework/blob/master/lib/wework/api/suite.rb)
