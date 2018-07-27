@@ -132,7 +132,7 @@ $provider_api = Wework::Api::Provider.new(
 
 [Wework::Api::Methods::Provider](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/provider.rb)
 
-[Wework::Api::Methods::Suite](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/suite.rb)
+[Wework::Api::Methods::Service](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/service.rb)
 
 
 ## Contributing

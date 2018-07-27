@@ -5,7 +5,7 @@ module Wework
     class Suite < Base
 
       include Wework::Cipher
-      include Methods::Suite
+      include Methods::Service
 
       attr_reader :encoding_aes_key, :suite_id, :suite_secret, :suite_token
 

@@ -1,7 +1,7 @@
 module Wework
   module Api
     module Methods
-      module Suite
+      module Service
         def corp_authorize_url(redirect_uri, state="corp_authorize")
           "#{APP_AUTHORIZE_ENDPOINT}?suite_id=#{suite_id}&pre_auth_code=#{get_pre_auth_code}&redirect_uri=#{redirect_uri}&state=#{state}"
         end

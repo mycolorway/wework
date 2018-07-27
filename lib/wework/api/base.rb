@@ -8,6 +8,7 @@ module Wework
       include Methods::User
       include Methods::Department
       include Methods::Tag
+      include Methods::Crm
       include Methods::Batch
 
       attr_accessor :corp_id, :secret, :options
