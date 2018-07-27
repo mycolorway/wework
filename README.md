@@ -46,6 +46,33 @@ agent_api = $wework_suite.corp(
 )
 ```
 
+3). 第三方应用回调协议
+
+获取加密数据
+
+```ruby
+encrypt_str = if params[:xml].present?
+                params[:xml]['Encrypt']
+              else
+                Hash.from_xml(request.raw_post)['xml']['Encrypt']
+              end
+
+#首次校验接口 encrpt_str = params[:echostr]
+```
+
+消息签名
+
+```ruby
+$wework_suite.signature(timestamp, nonce, encrypt_str)
+```
+
+ 消息解密
+
+ ```ruby
+ $wework_suite.msg_decrypt(encrypt_data)
+ ```
+
+
 #### 自建应用
 
 初始化接口 [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/agent.rb)
@@ -100,6 +127,8 @@ $provider_api = Wework::Api::Provider.new(
 [Wework::Api::Methods::Approval](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/approval.rb)
 
 [Wework::Api::Methods::Checkin](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/checkin.rb)
+
+[Wework::Api::Methods::Batch](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/batch.rb)
 
 [Wework::Api::Methods::Provider](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/provider.rb)
 
