@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-#### 初始化
+### 初始化
 
 ```
 Wework.configure do |config|
@@ -34,7 +34,7 @@ Wework.configure do |config|
 end
 ```
 
-#### 第三方应用
+### 第三方应用
 
 1). 初始化套件接口 [Wework::Api::Suite](https://github.com/mycolorway/wework/blob/master/lib/wework/api/suite.rb)
 
@@ -85,7 +85,7 @@ $wework_suite.signature(timestamp, nonce, encrypt_str)
  ```
 
 
-#### 自建应用
+### 自建应用
 
 初始化接口 [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/master/lib/wework/api/agent.rb)
 
@@ -97,7 +97,7 @@ $agent_api = Wework::Api::Agent.new(
 )
 ```
 
-#### 通讯录同步
+### 通讯录同步
 
 初始化接口 [Wework::Api::Contact](https://github.com/mycolorway/wework/blob/master/lib/wework/api/contact.rb)
 
@@ -108,7 +108,7 @@ $contact_api = Wework::Api::Contact.new(
 )
 ```
 
-#### 应用服务商接口 (单点登录)
+### 应用服务商接口 (单点登录)
 
 初始化
 
@@ -119,7 +119,7 @@ $provider_api = Wework::Api::Provider.new(
 )
 ```
 
-#### 小程序 encryptedData 解密
+### 小程序 encryptedData 解密
 
 ```ruby
 require "openssl"
@@ -135,7 +135,7 @@ values = JSON.parse data
 ```
 
 
-## Methods
+## 已实现接口列表
 
 [Wework::Api::Methods::Agent](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/agent.rb)
 
