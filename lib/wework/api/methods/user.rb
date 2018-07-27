@@ -29,6 +29,18 @@ module Wework
         def user_list department_id, fetch_child=0
           get 'user/list', params: {department_id: department_id, fetch_child: fetch_child}
         end
+
+        def convert_to_openid userid
+          post 'user/convert_to_openid', {userid: userid}
+        end
+
+        def convert_to_userid openid
+          post 'user/convert_to_userid', {openid: openid}
+        end
+
+        def authsucc userid
+          get 'user/authsucc', params: {userid: userid}
+        end
       end
     end
   end
