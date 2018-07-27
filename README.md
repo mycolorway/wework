@@ -107,6 +107,21 @@ $provider_api = Wework::Api::Provider.new(
 )
 ```
 
+#### 小程序 encryptedData 解密
+
+```ruby
+require "openssl"
+CIPHER = 'AES-128-CBC'.freeze
+
+cipher = OpenSSL::Cipher.new(CIPHER)
+cipher.decrypt
+cipher.key = Base64.decode64(session_key)
+cipher.iv = Base64.decode64(iv)
+encrypted = Base64.decode64(encryptedData)
+data = cipher.update(encrypted) + cipher.final
+values = JSON.parse data
+```
+
 
 ## Methods
 
