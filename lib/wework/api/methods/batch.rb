@@ -18,6 +18,10 @@ module Wework
           get 'batch/getresult', params: {jobid: job_id}
         end
 
+        def batch_invite user=[], party=[], tag=[]
+          post 'batch/invite', {user: user, party: party, tag: tag}
+        end
+
         private
 
         def batch_params media_id, callback_url, token, encodingaeskey
