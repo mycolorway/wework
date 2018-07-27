@@ -45,14 +45,16 @@ module Wework
       url_base = header.delete(:base) || base
       as = header.delete(:as)
       header['Accept'] = 'application/json'
+      dup_header = header.dup
       response = yield("#{url_base}#{path}", header)
-
       raise ResponseError.new(response.status) unless HTTP_OK_STATUS.include?(response.status)
 
       parse_response(response, as || :json) do |parse_as, data|
         break data unless parse_as == :json
         result = Wework::Result.new(data)
-        Rails.logger.debug "[WEWORK] request path(#{url_base}#{path}): #{result.inspect}" if defined?(Rails.logger) && Rails.logger
+        if defined?(Rails.logger) && Rails.logger
+          Rails.logger.debug "[WEWORK] request path(#{url_base}#{path}); request params: #{dup_header.inspect}; response: #{result.inspect}"
+        end
         raise AccessTokenExpiredError if result.token_expired?
         result
       end
