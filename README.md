@@ -26,7 +26,7 @@ Or install it yourself as:
 
 #### 第三方应用
 
-1). 初始化套件接口 [Wework::Api::Suite](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/suite.rb)
+1). 初始化套件接口 [Wework::Api::Suite](https://github.com/mycolorway/wework/blob/master/lib/wework/api/suite.rb)
 
 ```ruby
 $wework_suite = Wework::Api::Suite.new(
@@ -37,9 +37,9 @@ $wework_suite = Wework::Api::Suite.new(
   suite_secret: ENV['WEWORK_SUITE_SECRET']                  # Secret
 )
 ```
-[套件接口列表](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/suite.rb)
 
-2). 获取第三方应用接口 [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/agent.rb)
+
+2). 获取第三方应用接口 [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/master/lib/wework/api/agent.rb)
 
 ```ruby
 agent_api = $wework_suite.corp(
@@ -77,7 +77,7 @@ $wework_suite.signature(timestamp, nonce, encrypt_str)
 
 #### 自建应用
 
-初始化接口 [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/agent.rb)
+初始化接口 [Wework::Api::Agent](https://github.com/mycolorway/wework/blob/master/lib/wework/api/agent.rb)
 
 ``` ruby
 $agent_api = Wework::Api::Agent.new(
@@ -89,7 +89,7 @@ $agent_api = Wework::Api::Agent.new(
 
 #### 通讯录同步
 
-初始化接口 [Wework::Api::Contact](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/contact.rb)
+初始化接口 [Wework::Api::Contact](https://github.com/mycolorway/wework/blob/master/lib/wework/api/contact.rb)
 
 ``` ruby
 $contact_api = Wework::Api::Contact.new(
@@ -127,29 +127,29 @@ values = JSON.parse data
 
 ## Methods
 
-[Wework::Api::Methods::Agent](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/agent.rb)
+[Wework::Api::Methods::Agent](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/agent.rb)
 
-[Wework::Api::Methods::User](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/user.rb)
+[Wework::Api::Methods::User](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/user.rb)
 
-[Wework::Api::Methods::Tag](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/tag.rb)
+[Wework::Api::Methods::Tag](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/tag.rb)
 
-[Wework::Api::Methods::Department](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/department.rb)
+[Wework::Api::Methods::Department](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/department.rb)
 
-[Wework::Api::Methods::Message](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/message.rb)
+[Wework::Api::Methods::Message](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/message.rb)
 
-[Wework::Api::Methods::Media](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/media.rb)
+[Wework::Api::Methods::Media](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/media.rb)
 
-[Wework::Api::Methods::Menu](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/menu.rb)
+[Wework::Api::Methods::Menu](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/menu.rb)
 
-[Wework::Api::Methods::Approval](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/approval.rb)
+[Wework::Api::Methods::Approval](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/approval.rb)
 
-[Wework::Api::Methods::Checkin](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/checkin.rb)
+[Wework::Api::Methods::Checkin](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/checkin.rb)
 
-[Wework::Api::Methods::Batch](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/batch.rb)
+[Wework::Api::Methods::Batch](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/batch.rb)
 
-[Wework::Api::Methods::Provider](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/provider.rb)
+[Wework::Api::Methods::Provider](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/provider.rb)
 
-[Wework::Api::Methods::Service](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/service.rb)
+[Wework::Api::Methods::Service](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/service.rb)
 
 
 ## Contributing
