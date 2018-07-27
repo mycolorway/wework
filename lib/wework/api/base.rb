@@ -7,6 +7,7 @@ module Wework
       include Methods::Media
       include Methods::User
       include Methods::Department
+      include Methods::Tag
 
       attr_accessor :corp_id, :secret, :options
 

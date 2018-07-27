@@ -87,6 +87,8 @@ $provider_api = Wework::Api::Provider.new(
 
 [Wework::Api::Methods::User](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/user.rb)
 
+[Wework::Api::Methods::Tag](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/tag.rb)
+
 [Wework::Api::Methods::Department](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/department.rb)
 
 [Wework::Api::Methods::Message](https://github.com/mycolorway/wework/blob/suite/lib/wework/api/methods/message.rb)

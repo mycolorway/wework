@@ -3,8 +3,6 @@ module Wework
     class Corp < Base
 
       include Wework::Cipher
-      include Methods::User
-      include Methods::Department
 
       attr_reader :suite, :permanent_code
 
