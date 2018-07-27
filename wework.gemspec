@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["seandong"]
   spec.email         = ["sindon@gmail.com"]
 
-  spec.summary       = spec.description = %q{Ruby API wrapper for work wechat.}
+  spec.summary       = spec.description = %q{Ruby API wrapper for wechat work「企业微信」}
   spec.homepage      = "https://github.com/mycolorway/wework"
   spec.license       = "MIT"
 
