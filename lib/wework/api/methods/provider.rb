@@ -10,6 +10,11 @@ module Wework
         def get_login_info auth_code
           post 'service/get_login_info', {auth_code: auth_code}
         end
+
+        def get_register_code template_id, options={}
+          params = {template_id: template_id}
+          post 'service/get_register_code', params.merge(options)
+        end
       end
     end
   end
