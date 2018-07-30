@@ -54,6 +54,30 @@ module Wework
       [content, app_id]
     end
 
+    def msg_decrypt message
+      unpack(decrypt(Base64.decode64(message), encoding_aes_key))[0]
+    end
+
+    def msg_encrypt message
+      Base64.strict_encode64(encrypt(pack(message, corp_id), encoding_aes_key))
+    end
+
+    def signature(timestamp, nonce, encrypt)
+      array = [token, timestamp, nonce]
+      array << encrypt unless encrypt.nil?
+      Digest::SHA1.hexdigest array.compact.collect(&:to_s).sort.join
+    end
+
+    def generate_xml(msg, timestamp, nonce)
+      encrypt = msg_encrypt(msg)
+      {
+        Encrypt: encrypt,
+        MsgSignature: signature(timestamp, nonce, encrypt),
+        TimeStamp: timestamp,
+        Nonce: nonce
+      }.to_xml(root: 'xml', children: 'item', skip_instruct: true, skip_types: true)
+    end
+
     private
 
     def encode_padding(data)

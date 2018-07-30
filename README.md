@@ -108,16 +108,21 @@ $contact_api = Wework::Api::Contact.new(
 )
 ```
 
-### 应用服务商接口 (单点登录)
+### 应用服务商接口
 
 初始化
 
 ``` ruby
 $provider_api = Wework::Api::Provider.new(
-  corp_id: ENV['WEWORK_PROVIDER_CORPID'],                   # 应用服务商 CorpID
-  secret: ENV['WEWORK_PROVIDER_SECRET']                     # Secret
+  corp_id: ENV['WEWORK_PROVIDER_CORPID'],                     # 应用服务商 CorpID
+  secret: ENV['WEWORK_PROVIDER_SECRET'],                      # Secret
+  token: ENV['WEWORK_PROVIDER_TOKEN'],
+  encoding_aes_key: ENV['WEWORK_PROVIDER_ENCODING_AES_KEY']
 )
 ```
+
+回调接口消息加解密参考「第三方应用回调协议」
+
 
 ### 小程序 encryptedData 解密
 
