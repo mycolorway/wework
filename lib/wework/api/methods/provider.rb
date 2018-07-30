@@ -15,6 +15,11 @@ module Wework
           params = {template_id: template_id}
           post 'service/get_register_code', params.merge(options)
         end
+
+        def get_register_url template_id, options={}
+          register_code = get_register_code(template_id, options).register_code
+          "#{REGISTER_ENDPOINT}?register_code=#{register_code}"
+        end
       end
     end
   end
