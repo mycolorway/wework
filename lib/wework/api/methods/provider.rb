@@ -8,7 +8,7 @@ module Wework
         end
 
         def get_login_info auth_code
-          post 'service/get_login_info', {auth_code: auth_code}
+          post 'service/get_login_info', {auth_code: auth_code, access_token: access_token}
         end
 
         def get_register_code template_id, options={}
