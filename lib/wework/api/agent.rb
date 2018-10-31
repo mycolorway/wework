@@ -4,6 +4,7 @@ module Wework
 
       include Methods::Agent
       include Methods::Message
+      include Methods::Appchat
       include Methods::Menu
       include Methods::Checkin
       include Methods::Approval
