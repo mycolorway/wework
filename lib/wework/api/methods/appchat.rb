@@ -5,7 +5,7 @@ module Wework
     module Methods
       module Appchat
 
-        def create_group group_name, owner_id, group_user_ids, chat_id
+        def appchat_create group_name, owner_id, group_user_ids, chat_id
           post 'appchat/create',
             name: group_name,
             owner: owner_id,
@@ -13,50 +13,46 @@ module Wework
             chatid: chat_id
         end
 
-        # name: group_name
-        # owner: owner_id
-        # add_user_list: add_user_list
-        # del_user_list: del_user_list
-        def update_group chat_id, payload={}
+        def appchat_update chat_id, payload={}
           payload.merge! chatid: chat_id
           post 'appchat/update', payload
         end
 
-        def get_group chat_id
+        def appchat_get chat_id
           get 'appchat/get', { params: { chatid: chat_id } }
         end
 
-        def group_text_message_send chat_id, content
-          message_send chat_id, {text: {content: content}, msgtype: 'text'}
+        def text_appchat_send chat_id, content
+          appchat_send chat_id, {text: {content: content}, msgtype: 'text'}
         end
 
-        def group_image_message_send chat_id, media_id
-          message_send chat_id, {image: {media_id: media_id}, msgtype: 'image'}
+        def image_appchat_send chat_id, media_id
+          appchat_send chat_id, {image: {media_id: media_id}, msgtype: 'image'}
         end
 
-        def group_voice_message_send chat_id, media_id
-          message_send chat_id, {voice: {media_id: media_id}, msgtype: 'voice'}
+        def voice_appchat_send chat_id, media_id
+          appchat_send chat_id, {voice: {media_id: media_id}, msgtype: 'voice'}
         end
 
-        def group_file_message_send chat_id, media_id
-          message_send chat_id, {file: {media_id: media_id}, msgtype: 'file'}
+        def file_appchat_send chat_id, media_id
+          appchat_send chat_id, {file: {media_id: media_id}, msgtype: 'file'}
         end
 
-        def group_video_message_send chat_id, video={}
-          message_send chat_id, {video: video, msgtype: 'video'}
+        def video_appchat_send chat_id, video={}
+          appchat_send chat_id, {video: video, msgtype: 'video'}
         end
 
-        def group_textcard_message_send chat_id, textcard={}
-          message_send chat_id, {textcard: textcard, msgtype: 'textcard'}
+        def textcard_appchat_send chat_id, textcard={}
+          appchat_send chat_id, {textcard: textcard, msgtype: 'textcard'}
         end
 
-        def group_news_message_send chat_id, news=[]
-          message_send chat_id, {news: {articles: news}, msgtype: 'news'}
+        def news_appchat_send chat_id, news=[]
+          appchat_send chat_id, {news: {articles: news}, msgtype: 'news'}
         end
 
         private
 
-        def message_send chat_id, payload={}
+        def appchat_send chat_id, payload={}
           payload.merge!(chatid: chat_id)
           post 'appchat/send', payload
         end

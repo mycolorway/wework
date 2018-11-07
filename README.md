@@ -152,6 +152,8 @@ values = JSON.parse data
 
 [Wework::Api::Methods::Message](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/message.rb)
 
+[Wework::Api::Methods::Appchat](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/appchat.rb)
+
 [Wework::Api::Methods::Media](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/media.rb)
 
 [Wework::Api::Methods::Menu](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/menu.rb)
