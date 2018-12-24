@@ -5,7 +5,6 @@ module Wework
     module Methods
       module Message
         def miniprogram_message_send user_id, miniprogram_notice={}
-          notice = miniprogram_notice.merge(appid: agent_id)
           post 'message/send', { touser: user_id, msgtype: 'miniprogram_notice', miniprogram_notice: notice }
         end
 
