@@ -10,6 +10,10 @@ module Wework
           get 'user/get', params: {userid: userid}
         end
 
+        def user_getuserid mobile
+          post 'user/getuserid', {mobile: mobile}
+        end
+
         def user_update userid, data={}
           post 'user/update', data.merge(userid: userid)
         end
