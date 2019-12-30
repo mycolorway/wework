@@ -11,6 +11,14 @@ module Wework
     BLOCK_SIZE = 32
     CIPHER = 'AES-256-CBC'.freeze
 
+    def token
+      @token ||= options[:token]
+    end
+
+    def encoding_aes_key
+      @encoding_aes_key ||= options[:encoding_aes_key]
+    end
+
     def encrypt(plain, encoding_aes_key)
       cipher = OpenSSL::Cipher.new(CIPHER)
       cipher.encrypt

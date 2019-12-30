@@ -8,6 +8,7 @@ module Wework
       include Methods::Menu
       include Methods::Checkin
       include Methods::Approval
+      include Wework::Cipher
 
       attr_reader :agent_id
 

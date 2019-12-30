@@ -4,14 +4,6 @@ module Wework
       include Methods::Provider
       include Wework::Cipher
 
-      attr_reader :encoding_aes_key, :token
-
-      def initialize(options={})
-        @token = options.delete(:token)
-        @encoding_aes_key = options.delete(:encoding_aes_key)
-        super(options)
-      end
-
       private
 
       def token_store

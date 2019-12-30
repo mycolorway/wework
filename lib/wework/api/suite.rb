@@ -7,13 +7,12 @@ module Wework
       include Wework::Cipher
       include Methods::Service
 
-      attr_reader :encoding_aes_key, :suite_id, :suite_secret, :suite_token, :token
+      attr_reader :suite_id, :suite_secret, :suite_token
 
       def initialize(options={})
         @suite_id = options.delete(:suite_id)
         @suite_secret = options.delete(:suite_secret)
         @token = @suite_token = options.delete(:suite_token)
-        @encoding_aes_key = options.delete(:encoding_aes_key)
         super(options)
       end
 
