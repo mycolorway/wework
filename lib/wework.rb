@@ -20,7 +20,7 @@ module Wework
   API_ENDPOINT            = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze
   AUTHORIZE_ENDPOINT      = 'https://open.weixin.qq.com/connect/oauth2/authorize'.freeze
   SSO_AUTHORIZE_ENDPOINT  = 'https://open.work.weixin.qq.com/wwopen/sso/3rd_qrConnect'.freeze
-  AGENT_AUTHORIZE_ENDPOINT = 'https://open.work.weixin.qq.com/wwopen/sso/qrConnect'.freeze
+  AGENT_SSO_AUTHORIZE_ENDPOINT = 'https://open.work.weixin.qq.com/wwopen/sso/qrConnect'.freeze
   APP_AUTHORIZE_ENDPOINT  = 'https://open.work.weixin.qq.com/3rdapp/install'.freeze
   REGISTER_ENDPOINT       = 'https://open.work.weixin.qq.com/3rdservice/wework/register'.freeze
   HTTP_OK_STATUS          = [200, 201].freeze
