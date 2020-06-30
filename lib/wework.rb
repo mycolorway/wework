@@ -2,8 +2,8 @@ require 'redis'
 require 'active_support/all'
 #require 'active_support/core_ext/object/blank'
 
-LIB_PATH = "#{File.dirname(__FILE__)}/wework"
-Dir["#{LIB_PATH}/api/methods/*.rb",  "#{LIB_PATH}/token/*.rb"].each { |path| require path }
+lib_path = "#{File.dirname(__FILE__)}/wework"
+Dir["#{lib_path}/api/methods/*.rb",  "#{lib_path}/token/*.rb"].each { |path| require path }
 
 require 'wework/version'
 require 'wework/cipher'
