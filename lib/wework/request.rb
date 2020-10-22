@@ -5,9 +5,11 @@ module Wework
   class Request
     attr_reader :base, :ssl_context, :httprb
 
-    def initialize(base, skip_verify_ssl)
+    # params proxy should be { address: 'ip address', port: 8888, username: 'username', password: 'password' }
+    def initialize(base, skip_verify_ssl, proxy: nil)
       @base = base
       @httprb = HTTP.timeout(**Wework.http_timeout_options)
+      @httprb = @httprb.via(*proxy.values) if proxy.is_a?(Hash)
       @ssl_context = OpenSSL::SSL::SSLContext.new
       @ssl_context.ssl_version = :TLSv1_client
       @ssl_context.verify_mode = OpenSSL::SSL::VERIFY_NONE if skip_verify_ssl

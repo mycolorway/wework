@@ -9,7 +9,7 @@ module Wework
     class Base
       include Wework::Cipher
 
-      attr_reader :corp_id, :app_id, :app_secret
+      attr_reader :corp_id, :app_id, :app_secret, :proxy
       attr_accessor :options
 
       delegate :access_token, to: :token_store
@@ -19,11 +19,12 @@ module Wework
         @corp_id      = corp_id
         @app_id       = app_id
         @app_secret   = app_secret
+        @proxy        = options.delete(:proxy)
         @options      = options
       end
 
       def request
-        @request ||= Wework::Request.new(API_ENDPOINT, false)
+        @request ||= Wework::Request.new(API_ENDPOINT, false, proxy: proxy)
       end
 
       def valid?

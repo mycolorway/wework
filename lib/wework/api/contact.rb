@@ -2,8 +2,8 @@ module Wework
   module Api
     class Contact < Base
 
-      def initialize(corp_id, corp_secret)
-        super(corp_id, CONTACT_AGENT_ID, corp_secret)
+      def initialize(corp_id, corp_secret, proxy: nil)
+        super(corp_id, CONTACT_AGENT_ID, corp_secret, { proxy: proxy })
       end
 
       def user_create data={}
