@@ -4,8 +4,8 @@ module Wework
   module Api
     module Methods
       module Message
-        def miniprogram_message_send user_id, miniprogram_notice={}
-          post 'message/send', { touser: user_id, msgtype: 'miniprogram_notice', miniprogram_notice: miniprogram_notice }
+        def miniprogram_message_send user_id, miniprogram_notice={}, options={}
+          post 'message/send', { touser: user_id, msgtype: 'miniprogram_notice', miniprogram_notice: miniprogram_notice, **options }
         end
 
         def text_message_send user_ids, department_ids, content

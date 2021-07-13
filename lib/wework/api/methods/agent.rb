@@ -32,6 +32,20 @@ module Wework
           }
         end
 
+        def get_agent_jssign_package url
+          timestamp = Time.now.to_i
+          noncestr = SecureRandom.hex(8)
+          str = "jsapi_ticket=#{jsapi_agent_ticket}&noncestr=#{noncestr}&timestamp=#{timestamp}&url=#{url}"
+          {
+            "appId"     => corp_id,
+            "nonceStr"  => noncestr,
+            "timestamp" => timestamp,
+            "url"       => url,
+            "signature" => Digest::SHA1.hexdigest(str),
+            "rawString" => str
+          }
+        end
+
         def get_session_with_jscode(js_code, grant_type='authorization_code')
           post 'miniprogram/jscode2session', {}, params: {js_code: js_code, grant_type: grant_type}
         end
