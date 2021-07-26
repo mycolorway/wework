@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'http', '>= 2.2'
-  spec.add_dependency 'activesupport', '>= 5.0'
+  spec.add_dependency 'activesupport'
   spec.add_dependency 'redis'
   spec.add_dependency 'builder', '>= 3.2'
   spec.add_dependency 'sinatra', '>= 2.0'
