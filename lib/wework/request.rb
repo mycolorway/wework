@@ -76,6 +76,9 @@ module Wework
         data = file
 
       when :json
+        if defined?(Rails.logger) && Rails.logger
+          Rails.logger.info response.body.to_s
+        end
         data = JSON.parse response.body.to_s
       else
         data = response.body

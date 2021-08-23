@@ -17,7 +17,9 @@ module Wework
         result = refresh_token
         value = result.send(token_key)
         if value.nil?
-          raise "#{self.class.name} refresh token error: #{result.inspect}"
+          if defined?(Rails.logger) && Rails.logger
+            Rails.logger.warn "#{self.class.name} refresh token error: #{result.inspect}"
+          end
         else
           expires_at = Time.now.to_i + result.expires_in.to_i - Wework.expired_shift_seconds
 
