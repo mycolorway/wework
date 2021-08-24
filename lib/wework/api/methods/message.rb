@@ -35,6 +35,10 @@ module Wework
         def news_message_send user_ids, department_ids, news=[]
           message_send user_ids, department_ids, {news: {articles: news}, msgtype: 'news'}
         end
+        
+        def templatecard_message_send user_ids, department_ids, templatecard={}
+          message_send user_ids, department_ids, {template_card: templatecard, msgtype: 'template_card'}
+        end        
 
         private
 
