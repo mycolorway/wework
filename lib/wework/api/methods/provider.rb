@@ -20,6 +20,18 @@ module Wework
           register_code = get_register_code(template_id, options).register_code
           "#{REGISTER_ENDPOINT}?register_code=#{register_code}"
         end
+
+        def service_media_upload(type, file)
+          post_file 'service/media/upload', file, params: { type: type }
+        end
+
+        def id_translate auth_corpid, media_id
+          post 'service/contact/id_translate', { auth_corpid: auth_corpid, media_id_list: [ media_id ] }
+        end
+
+        def service_batch_getresult job_id
+          get 'service/batch/getresult', params: { jobid: job_id }
+        end
       end
     end
   end

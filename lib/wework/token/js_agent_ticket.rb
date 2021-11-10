@@ -2,12 +2,12 @@ require 'wework/token/base'
 
 module Wework
   module Token
-    class JsTicket < Base
+    class JsAgentTicket < Base
 
       alias_method :ticket, :token
 
       def redis_key
-        @redis_key ||= Digest::MD5.hexdigest "WX_JS_TICKET_#{client.corp_id}_#{client.agent_id}"
+        @redis_key ||= Digest::MD5.hexdigest "WX_JS_AGENT_TICKET_#{client.corp_id}_#{client.agent_id}"
       end
 
       def token_key
@@ -15,7 +15,7 @@ module Wework
       end
 
       def refresh_token
-        client.get 'get_jsapi_ticket'
+        client.get 'ticket/get', params: { type: 'agent_config' }
       end
 
     end

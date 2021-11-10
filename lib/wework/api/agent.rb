@@ -22,10 +22,18 @@ module Wework
         jsticket_store.ticket
       end
 
+      def jsapi_agent_ticket
+        jsticket_agent_store.ticket
+      end
+
       private
 
       def jsticket_store
         @jsticket_store ||= Token::JsTicket.new self
+      end
+
+      def jsticket_agent_store
+        @jsticket_agent_store ||= Token::JsAgentTicket.new self
       end
     end
   end
