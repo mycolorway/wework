@@ -3,6 +3,7 @@ module Wework
     class Agent < Base
 
       include Methods::Agent
+      include Methods::Externalcontact
       include Methods::Message
       include Methods::Appchat
       include Methods::Menu
