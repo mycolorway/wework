@@ -168,6 +168,7 @@ values = JSON.parse data
 
 [Wework::Api::Methods::Service](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/service.rb)
 
+[Wework::Api::Methods::License](https://github.com/mycolorway/wework/blob/master/lib/wework/api/methods/license.rb)
 
 ## Contributing
 
