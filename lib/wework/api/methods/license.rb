@@ -26,7 +26,7 @@ module Wework
 
         def list_order(corpid, start_time=nil, end_time=nil)
           post 'license/list_order',
-            corpd: corpid,
+            corpid: corpid,
             start_time: start_time,
             end_time: end_time
         end
@@ -54,18 +54,18 @@ module Wework
 
         def get_active_info_by_code(corpid, active_code)
           post 'license/get_active_info_by_code',
-            corpd: corpid,
+            corpid: corpid,
             active_code: active_code
         end
 
         def batch_get_active_info_by_code(corpid, active_code_list=[])
           post 'license/batch_get_active_info_by_code',
-            corpd: corpid,
+            corpid: corpid,
             active_code_list: active_code_list
         end
 
-        def list_actived_account(corpd)
-          post 'license/list_actived_account', corpd: corpd
+        def list_actived_account(corpid)
+          post 'license/list_actived_account', corpid: corpid
         end
 
         def get_active_info_by_user(corpid, userid)
