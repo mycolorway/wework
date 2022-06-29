@@ -35,11 +35,15 @@ module Wework
         def news_message_send user_ids, department_ids, news=[]
           message_send user_ids, department_ids, {news: {articles: news}, msgtype: 'news'}
         end
-        
+
         def template_message_send user_ids, department_ids, selected_ticket_list, template_msg={}
           payload = { template_msg: template_msg, msgtype: 'template_msg' }
           payload[:selected_ticket_list] = selected_ticket_list if selected_ticket_list.present?
           message_send user_ids, department_ids, payload
+        end
+
+        def template_card_message_send user_ids, department_ids, template_card={}
+          message_send user_ids, department_ids, { template_card: template_card, msgtype: 'template_card' }
         end
 
         private
