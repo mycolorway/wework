@@ -79,6 +79,16 @@ module Wework
             corpid: corpid,
             transfer_list: transfer_list
         end
+
+        def set_auto_active_status(corpid, auto_active_status)
+          post 'license/set_auto_active_status',
+            corpid: corpid
+            auto_active_status: auto_active_status
+        end
+
+        def get_auto_active_status(corpid)
+          post 'license/get_auto_active_status', corpid: corpid
+        end
       end
     end
   end
