@@ -9,8 +9,10 @@ module Wework
     def initialize(base, skip_verify_ssl)
       @base = base
       @httprb = HTTP.timeout(**Wework.http_timeout_options)
-      @ssl_context = OpenSSL::SSL::SSLContext.new
-      @ssl_context.ssl_version = :TLSv1
+      @ssl_context = OpenSSL::SSL::SSLContext.new      
+      # ssl_version is deprecated and only provided for backwards compatibility. Use #min_version= and #max_version= instead
+      # @ssl_context.ssl_version = :TLSv1
+      @ssl_context.min_version = OpenSSL::SSL::TLS1_1_VERSION
       @ssl_context.verify_mode = OpenSSL::SSL::VERIFY_NONE if skip_verify_ssl
     end
 
