@@ -36,6 +36,14 @@ module Wework
           message_send user_ids, department_ids, {news: {articles: news}, msgtype: 'news'}
         end
 
+        def mpnews_message_send user_ids, department_ids, news=[]
+          message_send user_ids, department_ids, {mpnews: {articles: news}, msgtype: 'mpnews'}
+        end
+        
+        def markdown_message_send user_ids, department_ids, content
+          message_send user_ids, department_ids, {markdown: {content: content}, msgtype: 'markdown'}
+        end
+        
         private
 
         def message_send user_ids, department_ids, payload={}
