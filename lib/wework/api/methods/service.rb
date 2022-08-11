@@ -47,6 +47,10 @@ module Wework
         def get_session_with_jscode(js_code, grant_type='authorization_code')
           post 'service/miniprogram/jscode2session', {}, params: {js_code: js_code, grant_type: grant_type}
         end
+
+        def get_order(orderid)
+          post 'service/get_order', {suite_id: suite_id, orderid: orderid}
+        end
       end
     end
   end

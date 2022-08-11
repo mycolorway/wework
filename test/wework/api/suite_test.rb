@@ -50,4 +50,7 @@ class Wework::Api::SuiteTest < Minitest::Test
     assert suite.get_corp_token('corp_id', 'permanent_code').access_token
   end
 
+  def test_get_order
+    assert suite.get_order('order_id').access_token
+  end
 end
