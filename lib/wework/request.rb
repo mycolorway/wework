@@ -10,7 +10,8 @@ module Wework
       @base = base
       @httprb = HTTP.timeout(**Wework.http_timeout_options)
       @ssl_context = OpenSSL::SSL::SSLContext.new
-      @ssl_context.ssl_version = :TLSv1
+      @ssl_context.min_version = :TLSv1
+      @ssl_context.max_version = OpenSSL::SSL::TLS1_2_VERSION
       @ssl_context.verify_mode = OpenSSL::SSL::VERIFY_NONE if skip_verify_ssl
     end
 
