@@ -32,6 +32,10 @@ module Wework
         def service_batch_getresult job_id
           get 'service/batch/getresult', params: { jobid: job_id }
         end
+
+        def dial_fee_phone(caller, auth_corpid, callee)
+          post "service/dial", {caller: caller, auth_corpid: auth_corpid, callee: callee}
+        end
       end
     end
   end
