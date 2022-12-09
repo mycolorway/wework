@@ -1,3 +1,3 @@
 module Wework
-  VERSION = '1.2.6'.freeze
+  VERSION = '2.0.0'.freeze
 end

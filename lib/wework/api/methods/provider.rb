@@ -32,6 +32,11 @@ module Wework
         def service_batch_getresult job_id
           get 'service/batch/getresult', params: { jobid: job_id }
         end
+
+        def contact_search(auth_corpid, query_word, options={})
+          params = { auth_corpid: auth_corpid, query_word: query_word }
+          post 'service/contact/search', params.merge(options: options)
+        end
       end
     end
   end

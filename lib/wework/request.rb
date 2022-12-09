@@ -54,6 +54,10 @@ module Wework
         result = Wework::Result.new(data)
         if defined?(Rails.logger) && Rails.logger
           Rails.logger.debug "[WEWORK] request path(#{url_base}#{path}); request params: #{dup_header.inspect}; response: #{result.inspect}"
+
+          unless result.success?
+            Rails.logger.info "[WEWORK] failed request path(#{url_base}#{path}); request params: #{dup_header.inspect}; response: #{result.inspect}"
+          end
         end
         raise AccessTokenExpiredError if result.token_expired?
         result

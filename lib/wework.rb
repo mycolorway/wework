@@ -2,8 +2,8 @@ require 'redis'
 require 'active_support/all'
 #require 'active_support/core_ext/object/blank'
 
-LIB_PATH = "#{File.dirname(__FILE__)}/wework"
-Dir["#{LIB_PATH}/api/methods/*.rb",  "#{LIB_PATH}/token/*.rb"].each { |path| require path }
+lib_path = "#{File.dirname(__FILE__)}/wework"
+Dir["#{lib_path}/api/methods/*.rb",  "#{lib_path}/token/*.rb"].each { |path| require path }
 
 require 'wework/version'
 require 'wework/cipher'
@@ -20,6 +20,7 @@ module Wework
   API_ENDPOINT            = 'https://qyapi.weixin.qq.com/cgi-bin/'.freeze
   AUTHORIZE_ENDPOINT      = 'https://open.weixin.qq.com/connect/oauth2/authorize'.freeze
   SSO_AUTHORIZE_ENDPOINT  = 'https://open.work.weixin.qq.com/wwopen/sso/3rd_qrConnect'.freeze
+  AGENT_SSO_AUTHORIZE_ENDPOINT = 'https://open.work.weixin.qq.com/wwopen/sso/qrConnect'.freeze
   APP_AUTHORIZE_ENDPOINT  = 'https://open.work.weixin.qq.com/3rdapp/install'.freeze
   REGISTER_ENDPOINT       = 'https://open.work.weixin.qq.com/3rdservice/wework/register'.freeze
   HTTP_OK_STATUS          = [200, 201].freeze

@@ -4,6 +4,11 @@ module Wework
   module Api
     module Methods
       module Agent
+        def sso_authorize_url(redirect_uri, state='qrconnect')
+          uri = ERB::Util.url_encode(redirect_uri)
+          "#{AGENT_SSO_AUTHORIZE_ENDPOINT}?appid=#{corp_id}&agentid=#{agent_id}&redirect_uri=#{uri}&state=#{state}"
+        end
+
         def authorize_url(redirect_uri, scope="snsapi_base", state="wxwork")
           # user agent: UA is mozilla/5.0 (iphone; cpu iphone os 10_2 like mac os x) applewebkit/602.3.12 (khtml, like gecko) mobile/14c92 wxwork/1.3.2 micromessenger/6.2
           uri = ERB::Util.url_encode(redirect_uri)
